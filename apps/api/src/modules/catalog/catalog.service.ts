@@ -2,51 +2,25 @@ import { PrismaService } from '@/prisma/prisma.service';
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { ProductResponseDto } from './dto/product-response.dto';
 import { CreateProductDto } from './dto/create-product.dto';
+import { CatalogRepositoryPort } from './domain/ports/ catalog.repository.port';
 
 @Injectable()
 export class CatalogService {
-  constructor(private readonly prisma: PrismaService) {}
+  constructor(private readonly repository: CatalogRepositoryPort) {}
 
   async findOne(id: string): Promise<ProductResponseDto> {
-    const product = await this.prisma.client.product.findUnique({
-      where: {
-        id,
-      },
-    });
+    const product = await this.repository.findById(id);
 
-    if (!product) {
-      throw new NotFoundException(`Product with ID ${id} not found`);
-    }
+    if (!product) throw new NotFoundException('Not found');
 
-    return this.mapToDto(product);
+    return product;
   }
 
   async findAll(): Promise<ProductResponseDto[]> {
-    const products = await this.prisma.client.product.findMany();
-
-    return products.map((product) => this.mapToDto(product));
+    return this.repository.findAll();
   }
 
   async create(dto: CreateProductDto): Promise<ProductResponseDto> {
-    const product = await this.prisma.client.product.create({
-      data: {
-        ...dto,
-        scentProfile: dto.scentProfile,
-      },
-    });
-
-    return this.mapToDto(product);
-  }
-
-  private mapToDto(product: any): ProductResponseDto {
-    return {
-      id: product.id,
-      name: product.name,
-      brand: product.brand,
-      type: product.type,
-      price: product.price,
-      description: product.description,
-      scentProfile: product.scentProfile as any,
-    };
+    return this.repository.save(dto);
   }
 }

@@ -1,8 +1,8 @@
 import { CreateProductDto } from '../../dto/create-product.dto';
 import { ProductResponseDto } from '../../dto/product-response.dto';
 
-export interface CatalogRepositoryPort {
-  save(data: CreateProductDto): Promise<ProductResponseDto>;
-  findAll(): Promise<ProductResponseDto[]>;
-  findById(id: string): Promise<ProductResponseDto | null>;
+export abstract class CatalogRepositoryPort {
+  abstract save(data: CreateProductDto): Promise<ProductResponseDto>;
+  abstract findAll(): Promise<ProductResponseDto[]>;
+  abstract findById(id: string): Promise<ProductResponseDto | null>;
 }
