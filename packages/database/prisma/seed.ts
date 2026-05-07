@@ -1,4 +1,4 @@
-import { prisma } from "../src";
+import { prisma } from "../src/index";
 
 async function main() {
   await prisma.product.deleteMany();

@@ -1,45 +1,25 @@
+import { PrismaService } from '@/prisma/prisma.service';
 import { Injectable, NotFoundException } from '@nestjs/common';
 
 @Injectable()
 export class CatalogService {
-  private readonly products = [
-    {
-      id: '1',
-      name: 'Veloria Midnight',
-      brand: 'Veloria',
-      type: 'CANDLE',
-      price: 85,
-      description:
-        'A luxurious scented candle that evokes the mystery of a starlit night.',
-      scentProfile: {
-        top: ['Bergamot', 'Black Pepper'],
-        heart: ['Rose', 'Cedarwood'],
-        base: ['Sandalwood', 'Amber', 'Musk'],
-      },
-    },
-    {
-      id: '2',
-      name: 'Ethereal Mist',
-      brand: 'Veloria',
-      type: 'PERFUME',
-      price: 120,
-      description:
-        'A light, airy fragrance designed for those who appreciate subtle elegance.',
-      scentProfile: {
-        top: ['Lemon', 'Mint'],
-        heart: ['Jasmin', 'Green Tea'],
-        base: ['White Musk'],
-      },
-    },
-  ];
+  constructor(private readonly prisma: PrismaService) {}
 
-  findOne(id: string) {
-    const product = this.products.find((p) => p.id === id);
+  async findOne(id: string) {
+    const product = await this.prisma.client.product.findUnique({
+      where: {
+        id,
+      },
+    });
 
     if (!product) {
       throw new NotFoundException(`Product with ID ${id} not found`);
     }
 
     return product;
+  }
+
+  async findAll() {
+    return this.prisma.client.product.findMany();
   }
 }
