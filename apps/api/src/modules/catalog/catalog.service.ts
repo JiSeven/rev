@@ -27,17 +27,15 @@ export class CatalogService {
     return products.map((product) => this.mapToDto(product));
   }
 
-  async create(dto: CreateProductDto) {
-    return this.prisma.client.product.create({
+  async create(dto: CreateProductDto): Promise<ProductResponseDto> {
+    const product = await this.prisma.client.product.create({
       data: {
-        name: dto.name,
-        brand: dto.brand,
-        type: dto.type,
-        price: dto.price,
-        description: dto.description,
+        ...dto,
         scentProfile: dto.scentProfile,
       },
     });
+
+    return this.mapToDto(product);
   }
 
   private mapToDto(product: any): ProductResponseDto {
