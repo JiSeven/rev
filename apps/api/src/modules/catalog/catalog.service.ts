@@ -5,17 +5,31 @@ export class CatalogService {
   private readonly products = [
     {
       id: '1',
-      name: 'Veloria Midnight Candle',
+      name: 'Veloria Midnight',
       brand: 'Veloria',
+      type: 'CANDLE',
       price: 85,
-      description: 'Премиальная свеча с нотами сандала и амбры',
+      description:
+        'A luxurious scented candle that evokes the mystery of a starlit night.',
+      scentProfile: {
+        top: ['Bergamot', 'Black Pepper'],
+        heart: ['Rose', 'Cedarwood'],
+        base: ['Sandalwood', 'Amber', 'Musk'],
+      },
     },
     {
       id: '2',
-      name: 'Ethereal Mist Perfume',
+      name: 'Ethereal Mist',
       brand: 'Veloria',
+      type: 'PERFUME',
       price: 120,
-      description: 'Легкий аромат с верхними нотами бергамота',
+      description:
+        'A light, airy fragrance designed for those who appreciate subtle elegance.',
+      scentProfile: {
+        top: ['Lemon', 'Mint'],
+        heart: ['Jasmin', 'Green Tea'],
+        base: ['White Musk'],
+      },
     },
   ];
 
