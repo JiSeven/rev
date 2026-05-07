@@ -1,6 +1,7 @@
 import { PrismaService } from '@/prisma/prisma.service';
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { ProductResponseDto } from './dto/product-response.dto';
+import { CreateProductDto } from './dto/create-product.dto';
 
 @Injectable()
 export class CatalogService {
@@ -24,6 +25,19 @@ export class CatalogService {
     const products = await this.prisma.client.product.findMany();
 
     return products.map((product) => this.mapToDto(product));
+  }
+
+  async create(dto: CreateProductDto) {
+    return this.prisma.client.product.create({
+      data: {
+        name: dto.name,
+        brand: dto.brand,
+        type: dto.type,
+        price: dto.price,
+        description: dto.description,
+        scentProfile: dto.scentProfile,
+      },
+    });
   }
 
   private mapToDto(product: any): ProductResponseDto {
