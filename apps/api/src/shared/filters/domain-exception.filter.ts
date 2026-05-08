@@ -3,11 +3,19 @@ import {
   Catch,
   ExceptionFilter,
   HttpException,
+  HttpStatus,
   Logger,
 } from '@nestjs/common';
 import { Response } from 'express';
 
 import { DomainException } from '@/catalog/domain/exceptions/domain.exception';
+import { ProductNotFoundException } from '@/catalog/domain/exceptions/product-not-found.exception';
+import { ProductAlreadyExistsException } from '@/catalog/domain/exceptions/product-already-exists.exception';
+
+const EXCEPTION_STATUS_MAP = {
+  [ProductNotFoundException.toString()]: HttpStatus.NOT_FOUND,
+  [ProductAlreadyExistsException.toString()]: HttpStatus.CONFLICT,
+} as const;
 
 /**
  * Catches DomainExceptions and maps them to HTTP responses using the
@@ -23,8 +31,12 @@ export class DomainExceptionFilter implements ExceptionFilter {
     const response = host.switchToHttp().getResponse<Response>();
 
     if (exception instanceof DomainException) {
-      response.status(exception.httpStatus).json({
-        statusCode: exception.httpStatus,
+      const status =
+        EXCEPTION_STATUS_MAP[exception.name] ??
+        HttpStatus.INTERNAL_SERVER_ERROR;
+
+      response.status(status).json({
+        statusCode: status,
         error: exception.name,
         message: exception.message,
       });
