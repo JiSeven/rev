@@ -9,8 +9,8 @@ import {
 import { Response } from 'express';
 
 import { DomainException } from '@/catalog/domain/exceptions/domain.exception';
-import { ProductNotFoundException } from '@/catalog/domain/exceptions/product-not-found.exception';
 import { ProductAlreadyExistsException } from '@/catalog/domain/exceptions/product-already-exists.exception';
+import { ProductNotFoundException } from '@/catalog/domain/exceptions/product-not-found.exception';
 
 const EXCEPTION_STATUS_MAP = {
   [ProductNotFoundException.toString()]: HttpStatus.NOT_FOUND,

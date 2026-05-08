@@ -12,6 +12,8 @@ import {
 } from '@/catalog/domain/value-objects/scent-profile.vo';
 import { PrismaService } from '@/prisma/prisma.service';
 
+import type { Prisma } from '@veloria/database';
+
 @Injectable()
 export class PrismaCatalogAdapter extends CatalogPort {
   constructor(private readonly prisma: PrismaService) {
@@ -29,7 +31,8 @@ export class PrismaCatalogAdapter extends CatalogPort {
           type: entity.type,
           priceAmount: entity.price.amount,
           priceCurrency: entity.price.currency,
-          scentProfile: entity.scentProfile.toPlain(),
+          scentProfile:
+            entity.scentProfile.toPlain() as unknown as Prisma.InputJsonValue,
           createdAt: entity.createdAt,
         },
       });
@@ -49,21 +52,13 @@ export class PrismaCatalogAdapter extends CatalogPort {
 
   async findAll(): Promise<ProductEntity[]> {
     const products = await this.prisma.client.product.findMany();
-    return products.map((p) => this.mapToEntity(p));
-  }
 
-  async findById(id: string): Promise<ProductEntity | null> {
-    const record = await this.prisma.client.product.findUnique({
-      where: { id },
-    });
-
-    if (!record) return null;
-
-    return this.toDomain(record);
+    return products.map((p) => this.toDomain(p));
   }
 
   private toDomain(record: Product): ProductEntity {
-    const scentProfileData = record.scentProfile as ScentProfileProps;
+    const scentProfileData =
+      record.scentProfile as unknown as ScentProfileProps;
 
     return ProductEntity.reconstitute({
       id: record.id,

@@ -1,6 +1,7 @@
 import { randomUUID } from 'node:crypto';
 
 import { ProductType } from '../enums/product-type';
+import { DomainEvent } from '../events/domain-event.base';
 import { ProductCreatedEvent } from '../events/product-created.event';
 import { Money } from '../value-objects/money.vo';
 import { ScentProfile } from '../value-objects/scent-profile.vo';
@@ -19,7 +20,7 @@ export interface ProductProps {
 type CreateProductProps = Omit<ProductProps, 'id' | 'createdAt'>;
 
 export class ProductEntity {
-  private readonly _domainEvents: object[] = [];
+  private readonly _domainEvents: DomainEvent[] = [];
 
   private constructor(private readonly props: ProductProps) {}
 
@@ -89,7 +90,7 @@ export class ProductEntity {
   /**
    * Pull accumulated domain events and clear the internal list.
    */
-  public pullDomainEvents(): object[] {
+  public pullDomainEvents(): DomainEvent[] {
     const events = [...this._domainEvents];
     this._domainEvents.length = 0;
     return events;

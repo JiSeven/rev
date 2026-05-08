@@ -6,10 +6,14 @@ import { Money } from '@/catalog/domain/value-objects/money.vo';
 import { ScentProfile } from '@/catalog/domain/value-objects/scent-profile.vo';
 
 import { CreateProductCommand } from '../commands/create-product.command';
+import { DomainEventPublisher } from '../ports/domain-event-publisher.port';
 
 @Injectable()
 export class CreateProductUseCase {
-  constructor(private readonly catalogPort: CatalogPort) {}
+  constructor(
+    private readonly catalogPort: CatalogPort,
+    private readonly eventPublisher: DomainEventPublisher,
+  ) {}
 
   async execute(command: CreateProductCommand): Promise<ProductEntity> {
     const price = Money.of(command.priceAmount, command.priceCurrency);
@@ -24,7 +28,11 @@ export class CreateProductUseCase {
       scentProfile,
     });
 
+    const events = product.pullDomainEvents();
+
     const saved = await this.catalogPort.save(product);
+
+    await this.eventPublisher.publishAll(events);
 
     return saved;
   }
