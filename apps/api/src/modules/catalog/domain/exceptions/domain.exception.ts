@@ -1,0 +1,10 @@
+export abstract class DomainException extends Error {
+  abstract readonly httpStatus: number;
+
+  constructor(message: string) {
+    super(message);
+
+    this.name = this.constructor.name;
+    Object.setPrototypeOf(this, new.target.prototype);
+  }
+}
