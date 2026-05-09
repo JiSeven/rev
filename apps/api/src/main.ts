@@ -1,6 +1,8 @@
+import 'dotenv/config';
 import { NestFactory } from '@nestjs/core';
 
 import { AppModule } from './app.module';
+import { env } from './config/env';
 import { DomainExceptionFilter } from './shared/filters/domain-exception.filter';
 
 async function bootstrap() {
@@ -13,6 +15,7 @@ async function bootstrap() {
 
   app.enableCors();
 
-  await app.listen(process.env.PORT ?? 3002);
+  await app.listen(env.PORT);
 }
+
 bootstrap();

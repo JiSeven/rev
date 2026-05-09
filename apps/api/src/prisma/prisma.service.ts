@@ -1,15 +1,27 @@
 import { Injectable, OnModuleDestroy, OnModuleInit } from '@nestjs/common';
-import { prisma, type PrismaClient } from '@veloria/database';
+import { PrismaPg } from '@prisma/adapter-pg';
+
+import { PrismaClient } from './generated/client';
+import { env } from '../config/env';
 
 @Injectable()
-export class PrismaService implements OnModuleInit, OnModuleDestroy {
-  public client: PrismaClient = prisma;
+export class PrismaService
+  extends PrismaClient
+  implements OnModuleInit, OnModuleDestroy
+{
+  constructor() {
+    const adapter = new PrismaPg({
+      connectionString: env.DATABASE_URL,
+    });
+
+    super({ adapter });
+  }
 
   async onModuleInit() {
-    await this.client.$connect();
+    await this.$connect();
   }
 
   async onModuleDestroy() {
-    await this.client.$disconnect();
+    await this.$disconnect();
   }
 }

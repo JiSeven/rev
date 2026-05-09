@@ -1,5 +1,8 @@
 import { Injectable } from '@nestjs/common';
-import { PrismaClientKnownRequestError, Product } from '@veloria/database';
+import {
+  InputJsonValue,
+  PrismaClientKnownRequestError,
+} from '@prisma/client/runtime/client';
 
 import { ProductEntity } from '@/catalog/domain/entities/product.entity';
 import { ProductType } from '@/catalog/domain/enums/product-type';
@@ -10,9 +13,8 @@ import {
   ScentProfile,
   ScentProfileProps,
 } from '@/catalog/domain/value-objects/scent-profile.vo';
+import { Product } from '@/prisma/generated/client';
 import { PrismaService } from '@/prisma/prisma.service';
-
-import type { Prisma } from '@veloria/database';
 
 @Injectable()
 export class PrismaCatalogAdapter extends CatalogPort {
@@ -22,7 +24,7 @@ export class PrismaCatalogAdapter extends CatalogPort {
 
   async save(entity: ProductEntity): Promise<ProductEntity> {
     try {
-      const record = await this.prisma.client.product.create({
+      const record = await this.prisma.product.create({
         data: {
           id: entity.id,
           name: entity.name,
@@ -32,7 +34,7 @@ export class PrismaCatalogAdapter extends CatalogPort {
           priceAmount: entity.price.amount,
           priceCurrency: entity.price.currency,
           scentProfile:
-            entity.scentProfile.toPlain() as unknown as Prisma.InputJsonValue,
+            entity.scentProfile.toPlain() as unknown as InputJsonValue,
           createdAt: entity.createdAt,
         },
       });
@@ -51,7 +53,7 @@ export class PrismaCatalogAdapter extends CatalogPort {
   }
 
   async findAll(): Promise<ProductEntity[]> {
-    const products = await this.prisma.client.product.findMany();
+    const products = await this.prisma.product.findMany();
 
     return products.map((p) => this.toDomain(p));
   }
