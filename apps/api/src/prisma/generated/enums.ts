@@ -9,9 +9,16 @@
 * 🟢 You can import this file directly.
 */
 
-export const ProductType = {
-  CANDLE: 'CANDLE',
-  PERFUME: 'PERFUME'
+export const PartCategory = {
+  ENGINE: 'ENGINE',
+  BRAKES: 'BRAKES',
+  SUSPENSION: 'SUSPENSION',
+  EXHAUST: 'EXHAUST',
+  ELECTRICAL: 'ELECTRICAL',
+  BODY: 'BODY',
+  DRIVETRAIN: 'DRIVETRAIN',
+  TYRES: 'TYRES',
+  ACCESSORIES: 'ACCESSORIES'
 } as const
 
-export type ProductType = (typeof ProductType)[keyof typeof ProductType]
+export type PartCategory = (typeof PartCategory)[keyof typeof PartCategory]

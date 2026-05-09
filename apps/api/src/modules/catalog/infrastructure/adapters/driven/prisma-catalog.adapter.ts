@@ -1,16 +1,15 @@
 import { Injectable } from '@nestjs/common';
 
-import { ProductEntity } from '@/catalog/domain/entities/product.entity';
-import { ProductType } from '@/catalog/domain/enums/product-type';
-import { ProductAlreadyExistsException } from '@/catalog/domain/exceptions/product-already-exists.exception';
+import { MotorcycleEntity } from '@/catalog/domain/entities/motorcycle.entity';
+import { CatalogItemAlreadyExistsException } from '@/catalog/domain/exceptions/catalog-item.exceptions';
 import { CatalogPort } from '@/catalog/domain/ports/catalog.port';
+import { Motorcycle, Prisma } from '@/prisma/generated/client';
+import { PrismaService } from '@/prisma/prisma.service';
 import { Money } from '@/catalog/domain/value-objects/money.vo';
 import {
-  ScentProfile,
-  ScentProfileProps,
-} from '@/catalog/domain/value-objects/scent-profile.vo';
-import { Product, Prisma } from '@/prisma/generated/client';
-import { PrismaService } from '@/prisma/prisma.service';
+  EngineSpec,
+  EngineSpecProps,
+} from '@/catalog/domain/value-objects/engine-spec.vo';
 
 @Injectable()
 export class PrismaCatalogAdapter extends CatalogPort {
@@ -18,54 +17,54 @@ export class PrismaCatalogAdapter extends CatalogPort {
     super();
   }
 
-  async save(entity: ProductEntity): Promise<ProductEntity> {
+  // ─── Motorcycles ─────────────────────────────────────────────────────────────
+  async saveMotorcycle(entity: MotorcycleEntity): Promise<MotorcycleEntity> {
     try {
-      const record = await this.prisma.product.create({
+      const record = await this.prisma.motorcycle.create({
         data: {
           id: entity.id,
           name: entity.name,
           description: entity.description,
-          brand: entity.brand,
-          type: entity.type,
+          make: entity.make,
+          model: entity.model,
+          year: entity.year,
           priceAmount: entity.price.amount,
           priceCurrency: entity.price.currency,
-          scentProfile:
-            entity.scentProfile.toPlain() as unknown as Prisma.InputJsonValue,
+          engineSpec:
+            entity.engineSpec.toPlain() as unknown as Prisma.InputJsonValue,
           createdAt: entity.createdAt,
         },
       });
 
-      return this.toDomain(record);
+      return this.motorcycleToDomain(record);
     } catch (error) {
       if (
         error instanceof Prisma.PrismaClientKnownRequestError &&
         error.code === 'P2002'
       ) {
-        throw new ProductAlreadyExistsException(entity.name);
+        throw new CatalogItemAlreadyExistsException(
+          entity.make,
+          entity.model,
+          entity.year,
+        );
       }
-
       throw error;
     }
   }
 
-  async findAll(): Promise<ProductEntity[]> {
-    const products = await this.prisma.product.findMany();
-
-    return products.map((p) => this.toDomain(p));
-  }
-
-  private toDomain(record: Product): ProductEntity {
-    const scentProfileData =
-      record.scentProfile as unknown as ScentProfileProps;
-
-    return ProductEntity.reconstitute({
+  // ─── Mapping ─────────────────────────────────────────────────────────────────
+  private motorcycleToDomain(record: Motorcycle): MotorcycleEntity {
+    return MotorcycleEntity.reconstitute({
       id: record.id,
       name: record.name,
       description: record.description,
-      brand: record.brand,
-      type: record.type as ProductType,
+      make: record.make,
+      model: record.model,
+      year: record.year,
       price: Money.of(record.priceAmount, record.priceCurrency),
-      scentProfile: ScentProfile.create(scentProfileData),
+      engineSpec: EngineSpec.reconstitute(
+        record.engineSpec as unknown as EngineSpecProps,
+      ),
       createdAt: record.createdAt,
     });
   }

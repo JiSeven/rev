@@ -1,13 +1,13 @@
 import { Body, Controller, HttpCode, HttpStatus, Post } from '@nestjs/common';
 
-import { CreateProductCommand } from '@/catalog/application/commands/create-product.command';
-import { CreateProductUseCase } from '@/catalog/application/use-cases/create-product.use-case';
+import { CreateProductCommand } from '@/catalog/application/commands/create-motorcycle.command';
+import { CreateProductUseCase } from '@/catalog/application/use-cases/create-motorcycle.use-case';
 
-import { type CreateProductDto } from './dto/create-product.dto';
+import { type CreateProductDto } from './dto/create-motorcycle.dto';
 import {
   ProductResponseDto,
   toProductResponseDto,
-} from './dto/product-response.dto';
+} from './dto/catalog-response.dto';
 
 @Controller('catalog')
 export class CatalogHttpAdapter {

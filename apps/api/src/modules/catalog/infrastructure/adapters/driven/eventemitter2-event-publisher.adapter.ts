@@ -1,12 +1,12 @@
 import { Injectable } from '@nestjs/common';
 import { EventEmitter2 } from '@nestjs/event-emitter';
 
-import { DomainEventPublisher } from '@/catalog/application/ports/domain-event-publisher.port';
+import { EventPublisher } from '@/catalog/application/ports/event-publisher.port';
 
 import { DomainEvent } from '../../../domain/events/domain-event.base';
 
 @Injectable()
-export class EventEmitter2DomainEventPublisher extends DomainEventPublisher {
+export class EventEmitter2EventPublisher extends EventPublisher {
   constructor(private readonly emitter: EventEmitter2) {
     super();
   }

@@ -51,7 +51,8 @@ export const AnyNull = runtime.AnyNull
 
 
 export const ModelName = {
-  Product: 'Product'
+  Motorcycle: 'Motorcycle',
+  Part: 'Part'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -70,20 +71,38 @@ export const TransactionIsolationLevel = runtime.makeStrictEnum({
 export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof typeof TransactionIsolationLevel]
 
 
-export const ProductScalarFieldEnum = {
+export const MotorcycleScalarFieldEnum = {
   id: 'id',
   name: 'name',
   description: 'description',
-  brand: 'brand',
-  type: 'type',
+  make: 'make',
+  model: 'model',
+  year: 'year',
   priceAmount: 'priceAmount',
   priceCurrency: 'priceCurrency',
-  scentProfile: 'scentProfile',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  engineSpec: 'engineSpec',
+  createdAt: 'createdAt'
 } as const
 
-export type ProductScalarFieldEnum = (typeof ProductScalarFieldEnum)[keyof typeof ProductScalarFieldEnum]
+export type MotorcycleScalarFieldEnum = (typeof MotorcycleScalarFieldEnum)[keyof typeof MotorcycleScalarFieldEnum]
+
+
+export const PartScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  description: 'description',
+  make: 'make',
+  model: 'model',
+  year: 'year',
+  priceAmount: 'priceAmount',
+  priceCurrency: 'priceCurrency',
+  partCategory: 'partCategory',
+  compatibilities: 'compatibilities',
+  oemPartNumber: 'oemPartNumber',
+  createdAt: 'createdAt'
+} as const
+
+export type PartScalarFieldEnum = (typeof PartScalarFieldEnum)[keyof typeof PartScalarFieldEnum]
 
 
 export const SortOrder = {
@@ -116,4 +135,12 @@ export const JsonNullValueFilter = {
 } as const
 
 export type JsonNullValueFilter = (typeof JsonNullValueFilter)[keyof typeof JsonNullValueFilter]
+
+
+export const NullsOrder = {
+  first: 'first',
+  last: 'last'
+} as const
+
+export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
 
