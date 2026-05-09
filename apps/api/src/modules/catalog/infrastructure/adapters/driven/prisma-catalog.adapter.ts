@@ -1,8 +1,4 @@
 import { Injectable } from '@nestjs/common';
-import {
-  InputJsonValue,
-  PrismaClientKnownRequestError,
-} from '@prisma/client/runtime/client';
 
 import { ProductEntity } from '@/catalog/domain/entities/product.entity';
 import { ProductType } from '@/catalog/domain/enums/product-type';
@@ -13,7 +9,7 @@ import {
   ScentProfile,
   ScentProfileProps,
 } from '@/catalog/domain/value-objects/scent-profile.vo';
-import { Product } from '@/prisma/generated/client';
+import { Product, Prisma } from '@/prisma/generated/client';
 import { PrismaService } from '@/prisma/prisma.service';
 
 @Injectable()
@@ -34,7 +30,7 @@ export class PrismaCatalogAdapter extends CatalogPort {
           priceAmount: entity.price.amount,
           priceCurrency: entity.price.currency,
           scentProfile:
-            entity.scentProfile.toPlain() as unknown as InputJsonValue,
+            entity.scentProfile.toPlain() as unknown as Prisma.InputJsonValue,
           createdAt: entity.createdAt,
         },
       });
@@ -42,7 +38,7 @@ export class PrismaCatalogAdapter extends CatalogPort {
       return this.toDomain(record);
     } catch (error) {
       if (
-        error instanceof PrismaClientKnownRequestError &&
+        error instanceof Prisma.PrismaClientKnownRequestError &&
         error.code === 'P2002'
       ) {
         throw new ProductAlreadyExistsException(entity.name);

@@ -1,10 +1,10 @@
 import { Module } from '@nestjs/common';
+import { EventEmitterModule } from '@nestjs/event-emitter';
 
 import { CatalogModule } from './modules/catalog/catalog.module';
-import { PrismaModule } from './prisma/prisma.module';
 
 @Module({
-  imports: [PrismaModule, CatalogModule],
+  imports: [EventEmitterModule.forRoot(), CatalogModule],
   controllers: [],
 })
 export class AppModule {}
