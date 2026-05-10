@@ -8,4 +8,5 @@ export abstract class CatalogPort {
   ): Promise<MotorcycleEntity>;
 
   abstract findMotorcycleById(id: string): Promise<MotorcycleEntity | null>;
+  abstract findAllMotorcycles(): Promise<MotorcycleEntity[]>;
 }

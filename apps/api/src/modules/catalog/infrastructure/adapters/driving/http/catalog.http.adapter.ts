@@ -5,16 +5,20 @@ import {
   toMotorcycleResponseDto,
 } from './dto/get-motorcycle.dto';
 import { GetMotorcycleUseCase } from '@/catalog/application/use-cases/get-motorcycle.use-case';
+import { GetAllMotorcyclesUseCase } from '@/catalog/application/use-cases/get-motorcycles.use-case';
 
 @Controller('catalog')
 export class CatalogHttpAdapter {
   constructor(
     private readonly createMotorcycleUseCase: CreateMotorcycleUseCase,
     private readonly getMotorcycleUseCase: GetMotorcycleUseCase,
+    private readonly getAllMotorcyclesUseCase: GetAllMotorcyclesUseCase,
   ) {}
 
   @Get(':id')
-  async getOne(@Param('id') id: string): Promise<MotorcycleResponseDto | null> {
+  async findOne(
+    @Param('id') id: string,
+  ): Promise<MotorcycleResponseDto | null> {
     const motorcycle = await this.getMotorcycleUseCase.execute(id);
 
     if (motorcycle) {
@@ -22,5 +26,12 @@ export class CatalogHttpAdapter {
     }
 
     return null;
+  }
+
+  @Get()
+  async findAll(): Promise<MotorcycleResponseDto[]> {
+    const motorcycles = await this.getAllMotorcyclesUseCase.execute();
+
+    return motorcycles.map(toMotorcycleResponseDto);
   }
 }

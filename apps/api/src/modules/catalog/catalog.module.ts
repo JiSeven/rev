@@ -7,6 +7,7 @@ import { CreateMotorcycleUseCase } from './application/use-cases/create-motorcyc
 import { CatalogPort } from './domain/ports/catalog.port';
 import { InMemoryCatalogAdapter } from './infrastructure/adapters/driven/in-memory-catalog.adapter';
 import { GetMotorcycleUseCase } from './application/use-cases/get-motorcycle.use-case';
+import { GetAllMotorcyclesUseCase } from './application/use-cases/get-motorcycles.use-case';
 
 @Module({
   imports: [PrismaModule],
@@ -14,6 +15,7 @@ import { GetMotorcycleUseCase } from './application/use-cases/get-motorcycle.use
   providers: [
     CreateMotorcycleUseCase,
     GetMotorcycleUseCase,
+    GetAllMotorcyclesUseCase,
     {
       provide: CatalogPort,
       useClass: InMemoryCatalogAdapter,

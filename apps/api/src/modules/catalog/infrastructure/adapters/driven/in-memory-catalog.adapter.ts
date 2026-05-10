@@ -51,4 +51,8 @@ export class InMemoryCatalogAdapter implements CatalogPort {
 
     return motorcycle ?? null;
   }
+
+  async findAllMotorcycles(): Promise<MotorcycleEntity[]> {
+    return [...this.store.values()];
+  }
 }
