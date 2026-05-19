@@ -11,5 +11,7 @@
 export type * from './models/BodyType.js'
 export type * from './models/FuelType.js'
 export type * from './models/TransmissionType.js'
+export type * from './models/Brand.js'
+export type * from './models/Model.js'
 export type * from './models/Vehicle.js'
 export type * from './commonInputTypes.js'

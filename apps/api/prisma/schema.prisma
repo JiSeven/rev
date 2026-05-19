@@ -35,6 +35,28 @@ model TransmissionType {
   @@map("transmission_types")
 }
 
+model Brand {
+  id String @id @default(cuid())
+  name String @unique
+
+  models Model[]
+  vehicles Vehicle[]
+
+  @@map("brands")
+}
+
+model Model {
+  id String @id @default(cuid())
+  name String @unique
+
+  brandId String
+
+  vehicles Vehicle[]
+
+  brand Brand @relation(fields: [brandId], references: [id])
+  @@map("models")
+}
+
 model Vehicle {
   id String @id @default(cuid())
   vin String @unique @db.VarChar(17)
@@ -49,10 +71,14 @@ model Vehicle {
   bodyTypeId String
   fuelTypeId String
   transmissionTypeId String
+  brandId String
+  modelId String
 
   bodyType BodyType @relation(fields: [bodyTypeId], references: [id])
   fuelType FuelType @relation(fields: [fuelTypeId], references: [id])
   transmissionType TransmissionType @relation(fields: [transmissionTypeId], references: [id])
+  brand Brand @relation(fields: [brandId], references: [id])
+  model Model @relation(fields: [modelId], references: [id])
 
   @@map("vehicles")
 }

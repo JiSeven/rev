@@ -54,6 +54,8 @@ export const ModelName = {
   BodyType: 'BodyType',
   FuelType: 'FuelType',
   TransmissionType: 'TransmissionType',
+  Brand: 'Brand',
+  Model: 'Model',
   Vehicle: 'Vehicle'
 } as const
 
@@ -97,6 +99,23 @@ export const TransmissionTypeScalarFieldEnum = {
 export type TransmissionTypeScalarFieldEnum = (typeof TransmissionTypeScalarFieldEnum)[keyof typeof TransmissionTypeScalarFieldEnum]
 
 
+export const BrandScalarFieldEnum = {
+  id: 'id',
+  name: 'name'
+} as const
+
+export type BrandScalarFieldEnum = (typeof BrandScalarFieldEnum)[keyof typeof BrandScalarFieldEnum]
+
+
+export const ModelScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  brandId: 'brandId'
+} as const
+
+export type ModelScalarFieldEnum = (typeof ModelScalarFieldEnum)[keyof typeof ModelScalarFieldEnum]
+
+
 export const VehicleScalarFieldEnum = {
   id: 'id',
   vin: 'vin',
@@ -108,7 +127,9 @@ export const VehicleScalarFieldEnum = {
   longitude: 'longitude',
   bodyTypeId: 'bodyTypeId',
   fuelTypeId: 'fuelTypeId',
-  transmissionTypeId: 'transmissionTypeId'
+  transmissionTypeId: 'transmissionTypeId',
+  brandId: 'brandId',
+  modelId: 'modelId'
 } as const
 
 export type VehicleScalarFieldEnum = (typeof VehicleScalarFieldEnum)[keyof typeof VehicleScalarFieldEnum]

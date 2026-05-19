@@ -33,6 +33,16 @@ export type FuelType = Prisma.FuelTypeModel
  */
 export type TransmissionType = Prisma.TransmissionTypeModel
 /**
+ * Model Brand
+ * 
+ */
+export type Brand = Prisma.BrandModel
+/**
+ * Model Model
+ * 
+ */
+export type Model = Prisma.ModelModel
+/**
  * Model Vehicle
  * 
  */

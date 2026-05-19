@@ -13,6 +13,30 @@ async function main() {
   console.log('🚀 Starting seed process...');
 
   try {
+    // Brand and Model data
+    const honda = await prisma.brand.upsert({
+      where: { name: 'Honda' },
+      update: {},
+      create: { name: 'Honda' },
+    });
+    const toyota = await prisma.brand.upsert({
+      where: { name: 'Toyota' },
+      update: {},
+      create: { name: 'Toyota' },
+    });
+    const accord = await prisma.model.upsert({
+      where: { name: 'Accord' },
+      update: {},
+      create: { name: 'Accord', brandId: honda.id },
+    });
+
+    const camry = await prisma.model.upsert({
+      where: { name: 'Camry' },
+      update: {},
+      create: { name: 'Camry', brandId: toyota.id },
+    });
+
+    // Body types
     const sedan = await prisma.bodyType.upsert({
       where: { name: 'Sedan' },
       update: {},
@@ -29,6 +53,7 @@ async function main() {
       create: { name: 'Coupe' },
     });
 
+    // Fuel types
     const gasoline = await prisma.fuelType.upsert({
       where: { name: 'Gasoline' },
       update: {},
@@ -47,6 +72,7 @@ async function main() {
       create: { name: 'Electric' },
     });
 
+    // Transmission types
     const automatic = await prisma.transmissionType.upsert({
       where: { name: 'Automatic' },
       update: {},
@@ -69,6 +95,8 @@ async function main() {
         bodyTypeId: sedan.id,
         fuelTypeId: gasoline.id,
         transmissionTypeId: automatic.id,
+        brandId: honda.id,
+        modelId: accord.id,
       },
       {
         vin: '1HGM3T52B',
@@ -79,6 +107,8 @@ async function main() {
         bodyTypeId: suv.id,
         fuelTypeId: diesel.id,
         transmissionTypeId: manual.id,
+        brandId: toyota.id,
+        modelId: camry.id,
       },
     ];
 
