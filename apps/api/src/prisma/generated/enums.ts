@@ -9,16 +9,7 @@
 * 🟢 You can import this file directly.
 */
 
-export const PartCategory = {
-  ENGINE: 'ENGINE',
-  BRAKES: 'BRAKES',
-  SUSPENSION: 'SUSPENSION',
-  EXHAUST: 'EXHAUST',
-  ELECTRICAL: 'ELECTRICAL',
-  BODY: 'BODY',
-  DRIVETRAIN: 'DRIVETRAIN',
-  TYRES: 'TYRES',
-  ACCESSORIES: 'ACCESSORIES'
-} as const
 
-export type PartCategory = (typeof PartCategory)[keyof typeof PartCategory]
+
+// This file is empty because there are no enums in the schema.
+export {}

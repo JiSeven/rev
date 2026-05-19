@@ -29,8 +29,8 @@ export * from "./enums.js"
  * const prisma = new PrismaClient({
  *   adapter: new PrismaPg({ connectionString: process.env.DATABASE_URL })
  * })
- * // Fetch zero or more Motorcycles
- * const motorcycles = await prisma.motorcycle.findMany()
+ * // Fetch zero or more BodyTypes
+ * const bodyTypes = await prisma.bodyType.findMany()
  * ```
  * 
  * Read more in our [docs](https://pris.ly/d/client).
@@ -40,12 +40,22 @@ export type PrismaClient<LogOpts extends Prisma.LogLevel = never, OmitOpts exten
 export { Prisma }
 
 /**
- * Model Motorcycle
+ * Model BodyType
  * 
  */
-export type Motorcycle = Prisma.MotorcycleModel
+export type BodyType = Prisma.BodyTypeModel
 /**
- * Model Part
+ * Model FuelType
  * 
  */
-export type Part = Prisma.PartModel
+export type FuelType = Prisma.FuelTypeModel
+/**
+ * Model TransmissionType
+ * 
+ */
+export type TransmissionType = Prisma.TransmissionTypeModel
+/**
+ * Model Vehicle
+ * 
+ */
+export type Vehicle = Prisma.VehicleModel

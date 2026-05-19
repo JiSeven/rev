@@ -8,49 +8,52 @@ datasource db {
   provider = "postgresql"
 }
 
-enum PartCategory {
-  ENGINE
-  BRAKES
-  SUSPENSION
-  EXHAUST
-  ELECTRICAL
-  BODY
-  DRIVETRAIN
-  TYRES
-  ACCESSORIES
+model BodyType {
+  id String @id @default(cuid())
+  name String @unique
+
+  vehicles Vehicle[]
+
+  @@map("body_types")
 }
 
-model Motorcycle {
-  id            String   @id @default(uuid())
-  name          String
-  description   String
-  make          String
-  model         String
-  year          Int
-  priceAmount   Float
-  priceCurrency String   @db.Char(3)
-  engineSpec    Json
-  createdAt     DateTime @default(now())
+model FuelType {
+  id String @id @default(cuid())
+  name String @unique
 
-  @@unique([make, model, year])
-  @@index([make])
-  @@index([createdAt(sort: Desc)])
+  vehicles Vehicle[]
+
+  @@map("fuel_types")
 }
 
-model Part {
-  id              String       @id @default(uuid())
-  name            String
-  description     String
-  make            String
-  model           String
-  year            Int
-  priceAmount     Float
-  priceCurrency   String       @db.Char(3)
-  partCategory    PartCategory
-  compatibilities Json
-  oemPartNumber   String?
-  createdAt       DateTime     @default(now())
+model TransmissionType {
+  id String @id @default(cuid())
+  name String @unique
 
-  @@index([partCategory])
-  @@index([createdAt(sort: Desc)])
+  vehicles Vehicle[]
+
+  @@map("transmission_types")
 }
+
+model Vehicle {
+  id String @id @default(cuid())
+  vin String @unique @db.VarChar(17)
+  plateNumber String @unique @db.VarChar(15)
+  year Int @db.SmallInt
+  isAvailable Boolean @default(true)
+  fuelLevel Int @default(100) @db.SmallInt
+
+  latitude Decimal @db.Decimal(9, 6)
+  longitude Decimal @db.Decimal(9, 6)
+
+  bodyTypeId String
+  fuelTypeId String
+  transmissionTypeId String
+
+  bodyType BodyType @relation(fields: [bodyTypeId], references: [id])
+  fuelType FuelType @relation(fields: [fuelTypeId], references: [id])
+  transmissionType TransmissionType @relation(fields: [transmissionTypeId], references: [id])
+
+  @@map("vehicles")
+}
+

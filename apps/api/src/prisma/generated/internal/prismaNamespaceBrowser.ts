@@ -51,8 +51,10 @@ export const AnyNull = runtime.AnyNull
 
 
 export const ModelName = {
-  Motorcycle: 'Motorcycle',
-  Part: 'Part'
+  BodyType: 'BodyType',
+  FuelType: 'FuelType',
+  TransmissionType: 'TransmissionType',
+  Vehicle: 'Vehicle'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -71,38 +73,45 @@ export const TransactionIsolationLevel = runtime.makeStrictEnum({
 export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof typeof TransactionIsolationLevel]
 
 
-export const MotorcycleScalarFieldEnum = {
+export const BodyTypeScalarFieldEnum = {
   id: 'id',
-  name: 'name',
-  description: 'description',
-  make: 'make',
-  model: 'model',
-  year: 'year',
-  priceAmount: 'priceAmount',
-  priceCurrency: 'priceCurrency',
-  engineSpec: 'engineSpec',
-  createdAt: 'createdAt'
+  name: 'name'
 } as const
 
-export type MotorcycleScalarFieldEnum = (typeof MotorcycleScalarFieldEnum)[keyof typeof MotorcycleScalarFieldEnum]
+export type BodyTypeScalarFieldEnum = (typeof BodyTypeScalarFieldEnum)[keyof typeof BodyTypeScalarFieldEnum]
 
 
-export const PartScalarFieldEnum = {
+export const FuelTypeScalarFieldEnum = {
   id: 'id',
-  name: 'name',
-  description: 'description',
-  make: 'make',
-  model: 'model',
-  year: 'year',
-  priceAmount: 'priceAmount',
-  priceCurrency: 'priceCurrency',
-  partCategory: 'partCategory',
-  compatibilities: 'compatibilities',
-  oemPartNumber: 'oemPartNumber',
-  createdAt: 'createdAt'
+  name: 'name'
 } as const
 
-export type PartScalarFieldEnum = (typeof PartScalarFieldEnum)[keyof typeof PartScalarFieldEnum]
+export type FuelTypeScalarFieldEnum = (typeof FuelTypeScalarFieldEnum)[keyof typeof FuelTypeScalarFieldEnum]
+
+
+export const TransmissionTypeScalarFieldEnum = {
+  id: 'id',
+  name: 'name'
+} as const
+
+export type TransmissionTypeScalarFieldEnum = (typeof TransmissionTypeScalarFieldEnum)[keyof typeof TransmissionTypeScalarFieldEnum]
+
+
+export const VehicleScalarFieldEnum = {
+  id: 'id',
+  vin: 'vin',
+  plateNumber: 'plateNumber',
+  year: 'year',
+  isAvailable: 'isAvailable',
+  fuelLevel: 'fuelLevel',
+  latitude: 'latitude',
+  longitude: 'longitude',
+  bodyTypeId: 'bodyTypeId',
+  fuelTypeId: 'fuelTypeId',
+  transmissionTypeId: 'transmissionTypeId'
+} as const
+
+export type VehicleScalarFieldEnum = (typeof VehicleScalarFieldEnum)[keyof typeof VehicleScalarFieldEnum]
 
 
 export const SortOrder = {
@@ -113,34 +122,10 @@ export const SortOrder = {
 export type SortOrder = (typeof SortOrder)[keyof typeof SortOrder]
 
 
-export const JsonNullValueInput = {
-  JsonNull: JsonNull
-} as const
-
-export type JsonNullValueInput = (typeof JsonNullValueInput)[keyof typeof JsonNullValueInput]
-
-
 export const QueryMode = {
   default: 'default',
   insensitive: 'insensitive'
 } as const
 
 export type QueryMode = (typeof QueryMode)[keyof typeof QueryMode]
-
-
-export const JsonNullValueFilter = {
-  DbNull: DbNull,
-  JsonNull: JsonNull,
-  AnyNull: AnyNull
-} as const
-
-export type JsonNullValueFilter = (typeof JsonNullValueFilter)[keyof typeof JsonNullValueFilter]
-
-
-export const NullsOrder = {
-  first: 'first',
-  last: 'last'
-} as const
-
-export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
 
