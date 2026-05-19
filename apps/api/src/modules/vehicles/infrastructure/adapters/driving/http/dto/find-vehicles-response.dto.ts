@@ -2,20 +2,14 @@
 
 import { VehicleEntity } from '@/vehicles/domain/entities/vehicle.entity';
 
-export interface VehicleResponseDto {
-  id: string;
-  name: string;
-  createdAt: string;
-  description: string;
-}
-
-export function toVehicleResponseDto(
-  entity: VehicleEntity,
-): VehicleResponseDto {
+export function toVehicleResponseDto(entity: VehicleEntity) {
   return {
     id: entity.id,
-    name: entity.name,
-    description: entity.description,
-    createdAt: entity.createdAt.toISOString(),
+    vin: entity.vin,
+    plateNumber: entity.plateNumber,
+    year: entity.year,
+    isAvailable: entity.isAvailable,
+    fuelLevel: entity.fuelLevel,
+    location: entity.location,
   };
 }

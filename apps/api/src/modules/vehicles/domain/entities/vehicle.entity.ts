@@ -4,9 +4,13 @@ import { BaseEntity } from './base.entity';
 
 export interface VehicleProps {
   id: string;
-  name: string;
-  description: string;
-  createdAt: Date;
+  vin: string;
+  plateNumber: string;
+  year: number;
+  isAvailable: boolean;
+  fuelLevel: number;
+  latitude: number;
+  longitude: number;
 }
 
 export type CreateVehicleProps = Omit<VehicleProps, 'id' | 'createdAt'>;
@@ -21,16 +25,31 @@ export class VehicleEntity extends BaseEntity {
     return this.props.id;
   }
 
-  get name() {
-    return this.props.name;
+  get vin() {
+    return;
   }
 
-  get description() {
-    return this.props.description;
+  get plateNumber() {
+    return this.props.plateNumber;
   }
 
-  get createdAt() {
-    return this.props.createdAt;
+  get year() {
+    return this.props.year;
+  }
+
+  get isAvailable() {
+    return this.props.isAvailable;
+  }
+
+  get fuelLevel() {
+    return this.props.fuelLevel;
+  }
+
+  get location() {
+    return {
+      latitude: this.props.latitude,
+      longitude: this.props.longitude,
+    };
   }
 
   // ─── Factories ───────────────────────────────────────────────────────────────
@@ -41,7 +60,6 @@ export class VehicleEntity extends BaseEntity {
     const entity = new VehicleEntity({
       ...props,
       id: randomUUID(),
-      createdAt: new Date(),
     });
 
     return entity;

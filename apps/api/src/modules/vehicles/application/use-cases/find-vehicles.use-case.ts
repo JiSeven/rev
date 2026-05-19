@@ -4,10 +4,10 @@ import { VehicleEntity } from '../../domain/entities/vehicle.entity';
 import { VehiclesPort } from '../../domain/ports/vehicles.port';
 
 @Injectable()
-export class FindAllVehiclesUseCase {
+export class FindVehiclesUseCase {
   constructor(private readonly vehiclesPort: VehiclesPort) {}
 
   async execute(): Promise<VehicleEntity[]> {
-    return this.vehiclesPort.findAllVehicles();
+    return this.vehiclesPort.findVehicles();
   }
 }

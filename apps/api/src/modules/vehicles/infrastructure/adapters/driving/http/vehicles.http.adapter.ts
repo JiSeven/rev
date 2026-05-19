@@ -1,20 +1,15 @@
 import { Controller, Get } from '@nestjs/common';
 
-import {
-  VehicleResponseDto,
-  toVehicleResponseDto,
-} from './dto/find-vehicle-response.dto';
-import { FindAllVehiclesUseCase } from '../../../../application/use-cases/find-all-vehicles.use-case';
+import { toVehicleResponseDto } from './dto/find-vehicles-response.dto';
+import { FindVehiclesUseCase } from '../../../../application/use-cases/find-vehicles.use-case';
 
 @Controller('vehicles')
 export class VehiclesHttpAdapter {
-  constructor(
-    private readonly findAllVehiclesUseCase: FindAllVehiclesUseCase,
-  ) {}
+  constructor(private readonly findVehiclesUseCase: FindVehiclesUseCase) {}
 
   @Get()
-  async findAll(): Promise<VehicleResponseDto[]> {
-    const vehicles = await this.findAllVehiclesUseCase.execute();
+  async findVehicles() {
+    const vehicles = await this.findVehiclesUseCase.execute();
 
     return vehicles.map(toVehicleResponseDto);
   }
