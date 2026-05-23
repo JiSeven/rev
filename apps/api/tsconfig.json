@@ -21,7 +21,7 @@
     "noFallthroughCasesInSwitch": false,
     "paths": {
       "@/prisma/*": ["./src/prisma/*"],
-      "@/vehicles*": ["./src/modules/vehicles/*"],
+      "@/vehicles/*": ["./src/modules/vehicles/*"],
       "@/shared/*": ["./src/shared/*"],
     }
   }

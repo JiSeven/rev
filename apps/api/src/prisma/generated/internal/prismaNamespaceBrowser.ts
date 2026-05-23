@@ -51,9 +51,6 @@ export const AnyNull = runtime.AnyNull
 
 
 export const ModelName = {
-  BodyType: 'BodyType',
-  FuelType: 'FuelType',
-  TransmissionType: 'TransmissionType',
   Brand: 'Brand',
   Model: 'Model',
   Vehicle: 'Vehicle'
@@ -75,30 +72,6 @@ export const TransactionIsolationLevel = runtime.makeStrictEnum({
 export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof typeof TransactionIsolationLevel]
 
 
-export const BodyTypeScalarFieldEnum = {
-  id: 'id',
-  name: 'name'
-} as const
-
-export type BodyTypeScalarFieldEnum = (typeof BodyTypeScalarFieldEnum)[keyof typeof BodyTypeScalarFieldEnum]
-
-
-export const FuelTypeScalarFieldEnum = {
-  id: 'id',
-  name: 'name'
-} as const
-
-export type FuelTypeScalarFieldEnum = (typeof FuelTypeScalarFieldEnum)[keyof typeof FuelTypeScalarFieldEnum]
-
-
-export const TransmissionTypeScalarFieldEnum = {
-  id: 'id',
-  name: 'name'
-} as const
-
-export type TransmissionTypeScalarFieldEnum = (typeof TransmissionTypeScalarFieldEnum)[keyof typeof TransmissionTypeScalarFieldEnum]
-
-
 export const BrandScalarFieldEnum = {
   id: 'id',
   name: 'name'
@@ -118,17 +91,6 @@ export type ModelScalarFieldEnum = (typeof ModelScalarFieldEnum)[keyof typeof Mo
 
 export const VehicleScalarFieldEnum = {
   id: 'id',
-  vin: 'vin',
-  plateNumber: 'plateNumber',
-  year: 'year',
-  isAvailable: 'isAvailable',
-  fuelLevel: 'fuelLevel',
-  latitude: 'latitude',
-  longitude: 'longitude',
-  bodyTypeId: 'bodyTypeId',
-  fuelTypeId: 'fuelTypeId',
-  transmissionTypeId: 'transmissionTypeId',
-  brandId: 'brandId',
   modelId: 'modelId'
 } as const
 

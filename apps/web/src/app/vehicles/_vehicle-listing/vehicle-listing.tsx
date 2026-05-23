@@ -1,4 +1,4 @@
-import { Vehicle } from "@/types/vehicle";
+import { Vehicle } from "@/api/types";
 
 import { VehicleCard } from "./_vehicle-card/vehicle-card";
 import { Header } from "./_header/header";

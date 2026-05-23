@@ -8,78 +8,33 @@ datasource db {
   provider = "postgresql"
 }
 
-model BodyType {
-  id String @id @default(cuid())
-  name String @unique
-
-  vehicles Vehicle[]
-
-  @@map("body_types")
-}
-
-model FuelType {
-  id String @id @default(cuid())
-  name String @unique
-
-  vehicles Vehicle[]
-
-  @@map("fuel_types")
-}
-
-model TransmissionType {
-  id String @id @default(cuid())
-  name String @unique
-
-  vehicles Vehicle[]
-
-  @@map("transmission_types")
-}
-
 model Brand {
   id String @id @default(cuid())
   name String @unique
 
   models Model[]
-  vehicles Vehicle[]
 
   @@map("brands")
 }
 
 model Model {
   id String @id @default(cuid())
-  name String @unique
+  name String 
 
   brandId String
+  brand Brand @relation(fields: [brandId], references: [id])
 
   vehicles Vehicle[]
 
-  brand Brand @relation(fields: [brandId], references: [id])
   @@map("models")
 }
 
 model Vehicle {
   id String @id @default(cuid())
-  vin String @unique @db.VarChar(17)
-  plateNumber String @unique @db.VarChar(15)
-  year Int @db.SmallInt
-  isAvailable Boolean @default(true)
-  fuelLevel Int @default(100) @db.SmallInt
 
-  latitude Decimal @db.Decimal(9, 6)
-  longitude Decimal @db.Decimal(9, 6)
-
-  bodyTypeId String
-  fuelTypeId String
-  transmissionTypeId String
-  brandId String
   modelId String
-
-  bodyType BodyType @relation(fields: [bodyTypeId], references: [id])
-  fuelType FuelType @relation(fields: [fuelTypeId], references: [id])
-  transmissionType TransmissionType @relation(fields: [transmissionTypeId], references: [id])
-  brand Brand @relation(fields: [brandId], references: [id])
   model Model @relation(fields: [modelId], references: [id])
-
+  
   @@map("vehicles")
 }
 

@@ -166,28 +166,28 @@ export type ModelWhereInput = {
   id?: Prisma.StringFilter<"Model"> | string
   name?: Prisma.StringFilter<"Model"> | string
   brandId?: Prisma.StringFilter<"Model"> | string
-  vehicles?: Prisma.VehicleListRelationFilter
   brand?: Prisma.XOR<Prisma.BrandScalarRelationFilter, Prisma.BrandWhereInput>
+  vehicles?: Prisma.VehicleListRelationFilter
 }
 
 export type ModelOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   name?: Prisma.SortOrder
   brandId?: Prisma.SortOrder
-  vehicles?: Prisma.VehicleOrderByRelationAggregateInput
   brand?: Prisma.BrandOrderByWithRelationInput
+  vehicles?: Prisma.VehicleOrderByRelationAggregateInput
 }
 
 export type ModelWhereUniqueInput = Prisma.AtLeast<{
   id?: string
-  name?: string
   AND?: Prisma.ModelWhereInput | Prisma.ModelWhereInput[]
   OR?: Prisma.ModelWhereInput[]
   NOT?: Prisma.ModelWhereInput | Prisma.ModelWhereInput[]
+  name?: Prisma.StringFilter<"Model"> | string
   brandId?: Prisma.StringFilter<"Model"> | string
-  vehicles?: Prisma.VehicleListRelationFilter
   brand?: Prisma.XOR<Prisma.BrandScalarRelationFilter, Prisma.BrandWhereInput>
-}, "id" | "name">
+  vehicles?: Prisma.VehicleListRelationFilter
+}, "id">
 
 export type ModelOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
@@ -210,8 +210,8 @@ export type ModelScalarWhereWithAggregatesInput = {
 export type ModelCreateInput = {
   id?: string
   name: string
-  vehicles?: Prisma.VehicleCreateNestedManyWithoutModelInput
   brand: Prisma.BrandCreateNestedOneWithoutModelsInput
+  vehicles?: Prisma.VehicleCreateNestedManyWithoutModelInput
 }
 
 export type ModelUncheckedCreateInput = {
@@ -224,8 +224,8 @@ export type ModelUncheckedCreateInput = {
 export type ModelUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
-  vehicles?: Prisma.VehicleUpdateManyWithoutModelNestedInput
   brand?: Prisma.BrandUpdateOneRequiredWithoutModelsNestedInput
+  vehicles?: Prisma.VehicleUpdateManyWithoutModelNestedInput
 }
 
 export type ModelUncheckedUpdateInput = {
@@ -485,8 +485,8 @@ export type ModelSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   id?: boolean
   name?: boolean
   brandId?: boolean
-  vehicles?: boolean | Prisma.Model$vehiclesArgs<ExtArgs>
   brand?: boolean | Prisma.BrandDefaultArgs<ExtArgs>
+  vehicles?: boolean | Prisma.Model$vehiclesArgs<ExtArgs>
   _count?: boolean | Prisma.ModelCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["model"]>
 
@@ -512,8 +512,8 @@ export type ModelSelectScalar = {
 
 export type ModelOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "brandId", ExtArgs["result"]["model"]>
 export type ModelInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  vehicles?: boolean | Prisma.Model$vehiclesArgs<ExtArgs>
   brand?: boolean | Prisma.BrandDefaultArgs<ExtArgs>
+  vehicles?: boolean | Prisma.Model$vehiclesArgs<ExtArgs>
   _count?: boolean | Prisma.ModelCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type ModelIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -526,8 +526,8 @@ export type ModelIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extens
 export type $ModelPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Model"
   objects: {
-    vehicles: Prisma.$VehiclePayload<ExtArgs>[]
     brand: Prisma.$BrandPayload<ExtArgs>
+    vehicles: Prisma.$VehiclePayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -927,8 +927,8 @@ readonly fields: ModelFieldRefs;
  */
 export interface Prisma__ModelClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
-  vehicles<T extends Prisma.Model$vehiclesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Model$vehiclesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$VehiclePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   brand<T extends Prisma.BrandDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.BrandDefaultArgs<ExtArgs>>): Prisma.Prisma__BrandClient<runtime.Types.Result.GetResult<Prisma.$BrandPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+  vehicles<T extends Prisma.Model$vehiclesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Model$vehiclesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$VehiclePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.

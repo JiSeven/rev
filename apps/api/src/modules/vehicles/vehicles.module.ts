@@ -1,21 +1,12 @@
 import { Module } from '@nestjs/common';
 
-import { PrismaModule } from '@/prisma/prisma.module';
+import { PrismaService } from '@/prisma/prisma.service';
 
-import { FindVehiclesUseCase } from './application/use-cases/find-vehicles.use-case';
-import { VehiclesPort } from './domain/ports/vehicles.port';
-import { PrismaVehiclesAdapter } from './infrastructure/adapters/driven/prisma-vehicles.adapter';
-import { VehiclesHttpAdapter } from './infrastructure/adapters/driving/http/vehicles.http.adapter';
+import { FindVehiclesUseCase } from './use-cases/find-vehicles.use-case';
+import { VehiclesController } from './vehicles.controller';
 
 @Module({
-  imports: [PrismaModule],
-  controllers: [VehiclesHttpAdapter],
-  providers: [
-    FindVehiclesUseCase,
-    {
-      provide: VehiclesPort,
-      useClass: PrismaVehiclesAdapter,
-    },
-  ],
+  providers: [PrismaService, FindVehiclesUseCase],
+  controllers: [VehiclesController],
 })
 export class VehiclesModule {}

@@ -20,135 +20,39 @@ export type VehicleModel = runtime.Types.Result.DefaultSelection<Prisma.$Vehicle
 
 export type AggregateVehicle = {
   _count: VehicleCountAggregateOutputType | null
-  _avg: VehicleAvgAggregateOutputType | null
-  _sum: VehicleSumAggregateOutputType | null
   _min: VehicleMinAggregateOutputType | null
   _max: VehicleMaxAggregateOutputType | null
 }
 
-export type VehicleAvgAggregateOutputType = {
-  year: number | null
-  fuelLevel: number | null
-  latitude: runtime.Decimal | null
-  longitude: runtime.Decimal | null
-}
-
-export type VehicleSumAggregateOutputType = {
-  year: number | null
-  fuelLevel: number | null
-  latitude: runtime.Decimal | null
-  longitude: runtime.Decimal | null
-}
-
 export type VehicleMinAggregateOutputType = {
   id: string | null
-  vin: string | null
-  plateNumber: string | null
-  year: number | null
-  isAvailable: boolean | null
-  fuelLevel: number | null
-  latitude: runtime.Decimal | null
-  longitude: runtime.Decimal | null
-  bodyTypeId: string | null
-  fuelTypeId: string | null
-  transmissionTypeId: string | null
-  brandId: string | null
   modelId: string | null
 }
 
 export type VehicleMaxAggregateOutputType = {
   id: string | null
-  vin: string | null
-  plateNumber: string | null
-  year: number | null
-  isAvailable: boolean | null
-  fuelLevel: number | null
-  latitude: runtime.Decimal | null
-  longitude: runtime.Decimal | null
-  bodyTypeId: string | null
-  fuelTypeId: string | null
-  transmissionTypeId: string | null
-  brandId: string | null
   modelId: string | null
 }
 
 export type VehicleCountAggregateOutputType = {
   id: number
-  vin: number
-  plateNumber: number
-  year: number
-  isAvailable: number
-  fuelLevel: number
-  latitude: number
-  longitude: number
-  bodyTypeId: number
-  fuelTypeId: number
-  transmissionTypeId: number
-  brandId: number
   modelId: number
   _all: number
 }
 
 
-export type VehicleAvgAggregateInputType = {
-  year?: true
-  fuelLevel?: true
-  latitude?: true
-  longitude?: true
-}
-
-export type VehicleSumAggregateInputType = {
-  year?: true
-  fuelLevel?: true
-  latitude?: true
-  longitude?: true
-}
-
 export type VehicleMinAggregateInputType = {
   id?: true
-  vin?: true
-  plateNumber?: true
-  year?: true
-  isAvailable?: true
-  fuelLevel?: true
-  latitude?: true
-  longitude?: true
-  bodyTypeId?: true
-  fuelTypeId?: true
-  transmissionTypeId?: true
-  brandId?: true
   modelId?: true
 }
 
 export type VehicleMaxAggregateInputType = {
   id?: true
-  vin?: true
-  plateNumber?: true
-  year?: true
-  isAvailable?: true
-  fuelLevel?: true
-  latitude?: true
-  longitude?: true
-  bodyTypeId?: true
-  fuelTypeId?: true
-  transmissionTypeId?: true
-  brandId?: true
   modelId?: true
 }
 
 export type VehicleCountAggregateInputType = {
   id?: true
-  vin?: true
-  plateNumber?: true
-  year?: true
-  isAvailable?: true
-  fuelLevel?: true
-  latitude?: true
-  longitude?: true
-  bodyTypeId?: true
-  fuelTypeId?: true
-  transmissionTypeId?: true
-  brandId?: true
   modelId?: true
   _all?: true
 }
@@ -191,18 +95,6 @@ export type VehicleAggregateArgs<ExtArgs extends runtime.Types.Extensions.Intern
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
    * 
-   * Select which fields to average
-  **/
-  _avg?: VehicleAvgAggregateInputType
-  /**
-   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-   * 
-   * Select which fields to sum
-  **/
-  _sum?: VehicleSumAggregateInputType
-  /**
-   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-   * 
    * Select which fields to find the minimum value
   **/
   _min?: VehicleMinAggregateInputType
@@ -233,29 +125,14 @@ export type VehicleGroupByArgs<ExtArgs extends runtime.Types.Extensions.Internal
   take?: number
   skip?: number
   _count?: VehicleCountAggregateInputType | true
-  _avg?: VehicleAvgAggregateInputType
-  _sum?: VehicleSumAggregateInputType
   _min?: VehicleMinAggregateInputType
   _max?: VehicleMaxAggregateInputType
 }
 
 export type VehicleGroupByOutputType = {
   id: string
-  vin: string
-  plateNumber: string
-  year: number
-  isAvailable: boolean
-  fuelLevel: number
-  latitude: runtime.Decimal
-  longitude: runtime.Decimal
-  bodyTypeId: string
-  fuelTypeId: string
-  transmissionTypeId: string
-  brandId: string
   modelId: string
   _count: VehicleCountAggregateOutputType | null
-  _avg: VehicleAvgAggregateOutputType | null
-  _sum: VehicleSumAggregateOutputType | null
   _min: VehicleMinAggregateOutputType | null
   _max: VehicleMaxAggregateOutputType | null
 }
@@ -280,89 +157,31 @@ export type VehicleWhereInput = {
   OR?: Prisma.VehicleWhereInput[]
   NOT?: Prisma.VehicleWhereInput | Prisma.VehicleWhereInput[]
   id?: Prisma.StringFilter<"Vehicle"> | string
-  vin?: Prisma.StringFilter<"Vehicle"> | string
-  plateNumber?: Prisma.StringFilter<"Vehicle"> | string
-  year?: Prisma.IntFilter<"Vehicle"> | number
-  isAvailable?: Prisma.BoolFilter<"Vehicle"> | boolean
-  fuelLevel?: Prisma.IntFilter<"Vehicle"> | number
-  latitude?: Prisma.DecimalFilter<"Vehicle"> | runtime.Decimal | runtime.DecimalJsLike | number | string
-  longitude?: Prisma.DecimalFilter<"Vehicle"> | runtime.Decimal | runtime.DecimalJsLike | number | string
-  bodyTypeId?: Prisma.StringFilter<"Vehicle"> | string
-  fuelTypeId?: Prisma.StringFilter<"Vehicle"> | string
-  transmissionTypeId?: Prisma.StringFilter<"Vehicle"> | string
-  brandId?: Prisma.StringFilter<"Vehicle"> | string
   modelId?: Prisma.StringFilter<"Vehicle"> | string
-  bodyType?: Prisma.XOR<Prisma.BodyTypeScalarRelationFilter, Prisma.BodyTypeWhereInput>
-  fuelType?: Prisma.XOR<Prisma.FuelTypeScalarRelationFilter, Prisma.FuelTypeWhereInput>
-  transmissionType?: Prisma.XOR<Prisma.TransmissionTypeScalarRelationFilter, Prisma.TransmissionTypeWhereInput>
-  brand?: Prisma.XOR<Prisma.BrandScalarRelationFilter, Prisma.BrandWhereInput>
   model?: Prisma.XOR<Prisma.ModelScalarRelationFilter, Prisma.ModelWhereInput>
 }
 
 export type VehicleOrderByWithRelationInput = {
   id?: Prisma.SortOrder
-  vin?: Prisma.SortOrder
-  plateNumber?: Prisma.SortOrder
-  year?: Prisma.SortOrder
-  isAvailable?: Prisma.SortOrder
-  fuelLevel?: Prisma.SortOrder
-  latitude?: Prisma.SortOrder
-  longitude?: Prisma.SortOrder
-  bodyTypeId?: Prisma.SortOrder
-  fuelTypeId?: Prisma.SortOrder
-  transmissionTypeId?: Prisma.SortOrder
-  brandId?: Prisma.SortOrder
   modelId?: Prisma.SortOrder
-  bodyType?: Prisma.BodyTypeOrderByWithRelationInput
-  fuelType?: Prisma.FuelTypeOrderByWithRelationInput
-  transmissionType?: Prisma.TransmissionTypeOrderByWithRelationInput
-  brand?: Prisma.BrandOrderByWithRelationInput
   model?: Prisma.ModelOrderByWithRelationInput
 }
 
 export type VehicleWhereUniqueInput = Prisma.AtLeast<{
   id?: string
-  vin?: string
-  plateNumber?: string
   AND?: Prisma.VehicleWhereInput | Prisma.VehicleWhereInput[]
   OR?: Prisma.VehicleWhereInput[]
   NOT?: Prisma.VehicleWhereInput | Prisma.VehicleWhereInput[]
-  year?: Prisma.IntFilter<"Vehicle"> | number
-  isAvailable?: Prisma.BoolFilter<"Vehicle"> | boolean
-  fuelLevel?: Prisma.IntFilter<"Vehicle"> | number
-  latitude?: Prisma.DecimalFilter<"Vehicle"> | runtime.Decimal | runtime.DecimalJsLike | number | string
-  longitude?: Prisma.DecimalFilter<"Vehicle"> | runtime.Decimal | runtime.DecimalJsLike | number | string
-  bodyTypeId?: Prisma.StringFilter<"Vehicle"> | string
-  fuelTypeId?: Prisma.StringFilter<"Vehicle"> | string
-  transmissionTypeId?: Prisma.StringFilter<"Vehicle"> | string
-  brandId?: Prisma.StringFilter<"Vehicle"> | string
   modelId?: Prisma.StringFilter<"Vehicle"> | string
-  bodyType?: Prisma.XOR<Prisma.BodyTypeScalarRelationFilter, Prisma.BodyTypeWhereInput>
-  fuelType?: Prisma.XOR<Prisma.FuelTypeScalarRelationFilter, Prisma.FuelTypeWhereInput>
-  transmissionType?: Prisma.XOR<Prisma.TransmissionTypeScalarRelationFilter, Prisma.TransmissionTypeWhereInput>
-  brand?: Prisma.XOR<Prisma.BrandScalarRelationFilter, Prisma.BrandWhereInput>
   model?: Prisma.XOR<Prisma.ModelScalarRelationFilter, Prisma.ModelWhereInput>
-}, "id" | "vin" | "plateNumber">
+}, "id">
 
 export type VehicleOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
-  vin?: Prisma.SortOrder
-  plateNumber?: Prisma.SortOrder
-  year?: Prisma.SortOrder
-  isAvailable?: Prisma.SortOrder
-  fuelLevel?: Prisma.SortOrder
-  latitude?: Prisma.SortOrder
-  longitude?: Prisma.SortOrder
-  bodyTypeId?: Prisma.SortOrder
-  fuelTypeId?: Prisma.SortOrder
-  transmissionTypeId?: Prisma.SortOrder
-  brandId?: Prisma.SortOrder
   modelId?: Prisma.SortOrder
   _count?: Prisma.VehicleCountOrderByAggregateInput
-  _avg?: Prisma.VehicleAvgOrderByAggregateInput
   _max?: Prisma.VehicleMaxOrderByAggregateInput
   _min?: Prisma.VehicleMinOrderByAggregateInput
-  _sum?: Prisma.VehicleSumOrderByAggregateInput
 }
 
 export type VehicleScalarWhereWithAggregatesInput = {
@@ -370,124 +189,40 @@ export type VehicleScalarWhereWithAggregatesInput = {
   OR?: Prisma.VehicleScalarWhereWithAggregatesInput[]
   NOT?: Prisma.VehicleScalarWhereWithAggregatesInput | Prisma.VehicleScalarWhereWithAggregatesInput[]
   id?: Prisma.StringWithAggregatesFilter<"Vehicle"> | string
-  vin?: Prisma.StringWithAggregatesFilter<"Vehicle"> | string
-  plateNumber?: Prisma.StringWithAggregatesFilter<"Vehicle"> | string
-  year?: Prisma.IntWithAggregatesFilter<"Vehicle"> | number
-  isAvailable?: Prisma.BoolWithAggregatesFilter<"Vehicle"> | boolean
-  fuelLevel?: Prisma.IntWithAggregatesFilter<"Vehicle"> | number
-  latitude?: Prisma.DecimalWithAggregatesFilter<"Vehicle"> | runtime.Decimal | runtime.DecimalJsLike | number | string
-  longitude?: Prisma.DecimalWithAggregatesFilter<"Vehicle"> | runtime.Decimal | runtime.DecimalJsLike | number | string
-  bodyTypeId?: Prisma.StringWithAggregatesFilter<"Vehicle"> | string
-  fuelTypeId?: Prisma.StringWithAggregatesFilter<"Vehicle"> | string
-  transmissionTypeId?: Prisma.StringWithAggregatesFilter<"Vehicle"> | string
-  brandId?: Prisma.StringWithAggregatesFilter<"Vehicle"> | string
   modelId?: Prisma.StringWithAggregatesFilter<"Vehicle"> | string
 }
 
 export type VehicleCreateInput = {
   id?: string
-  vin: string
-  plateNumber: string
-  year: number
-  isAvailable?: boolean
-  fuelLevel?: number
-  latitude: runtime.Decimal | runtime.DecimalJsLike | number | string
-  longitude: runtime.Decimal | runtime.DecimalJsLike | number | string
-  bodyType: Prisma.BodyTypeCreateNestedOneWithoutVehiclesInput
-  fuelType: Prisma.FuelTypeCreateNestedOneWithoutVehiclesInput
-  transmissionType: Prisma.TransmissionTypeCreateNestedOneWithoutVehiclesInput
-  brand: Prisma.BrandCreateNestedOneWithoutVehiclesInput
   model: Prisma.ModelCreateNestedOneWithoutVehiclesInput
 }
 
 export type VehicleUncheckedCreateInput = {
   id?: string
-  vin: string
-  plateNumber: string
-  year: number
-  isAvailable?: boolean
-  fuelLevel?: number
-  latitude: runtime.Decimal | runtime.DecimalJsLike | number | string
-  longitude: runtime.Decimal | runtime.DecimalJsLike | number | string
-  bodyTypeId: string
-  fuelTypeId: string
-  transmissionTypeId: string
-  brandId: string
   modelId: string
 }
 
 export type VehicleUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  vin?: Prisma.StringFieldUpdateOperationsInput | string
-  plateNumber?: Prisma.StringFieldUpdateOperationsInput | string
-  year?: Prisma.IntFieldUpdateOperationsInput | number
-  isAvailable?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  fuelLevel?: Prisma.IntFieldUpdateOperationsInput | number
-  latitude?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
-  longitude?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
-  bodyType?: Prisma.BodyTypeUpdateOneRequiredWithoutVehiclesNestedInput
-  fuelType?: Prisma.FuelTypeUpdateOneRequiredWithoutVehiclesNestedInput
-  transmissionType?: Prisma.TransmissionTypeUpdateOneRequiredWithoutVehiclesNestedInput
-  brand?: Prisma.BrandUpdateOneRequiredWithoutVehiclesNestedInput
   model?: Prisma.ModelUpdateOneRequiredWithoutVehiclesNestedInput
 }
 
 export type VehicleUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  vin?: Prisma.StringFieldUpdateOperationsInput | string
-  plateNumber?: Prisma.StringFieldUpdateOperationsInput | string
-  year?: Prisma.IntFieldUpdateOperationsInput | number
-  isAvailable?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  fuelLevel?: Prisma.IntFieldUpdateOperationsInput | number
-  latitude?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
-  longitude?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
-  bodyTypeId?: Prisma.StringFieldUpdateOperationsInput | string
-  fuelTypeId?: Prisma.StringFieldUpdateOperationsInput | string
-  transmissionTypeId?: Prisma.StringFieldUpdateOperationsInput | string
-  brandId?: Prisma.StringFieldUpdateOperationsInput | string
   modelId?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
 export type VehicleCreateManyInput = {
   id?: string
-  vin: string
-  plateNumber: string
-  year: number
-  isAvailable?: boolean
-  fuelLevel?: number
-  latitude: runtime.Decimal | runtime.DecimalJsLike | number | string
-  longitude: runtime.Decimal | runtime.DecimalJsLike | number | string
-  bodyTypeId: string
-  fuelTypeId: string
-  transmissionTypeId: string
-  brandId: string
   modelId: string
 }
 
 export type VehicleUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  vin?: Prisma.StringFieldUpdateOperationsInput | string
-  plateNumber?: Prisma.StringFieldUpdateOperationsInput | string
-  year?: Prisma.IntFieldUpdateOperationsInput | number
-  isAvailable?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  fuelLevel?: Prisma.IntFieldUpdateOperationsInput | number
-  latitude?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
-  longitude?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
 }
 
 export type VehicleUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  vin?: Prisma.StringFieldUpdateOperationsInput | string
-  plateNumber?: Prisma.StringFieldUpdateOperationsInput | string
-  year?: Prisma.IntFieldUpdateOperationsInput | number
-  isAvailable?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  fuelLevel?: Prisma.IntFieldUpdateOperationsInput | number
-  latitude?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
-  longitude?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
-  bodyTypeId?: Prisma.StringFieldUpdateOperationsInput | string
-  fuelTypeId?: Prisma.StringFieldUpdateOperationsInput | string
-  transmissionTypeId?: Prisma.StringFieldUpdateOperationsInput | string
-  brandId?: Prisma.StringFieldUpdateOperationsInput | string
   modelId?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
@@ -503,232 +238,17 @@ export type VehicleOrderByRelationAggregateInput = {
 
 export type VehicleCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  vin?: Prisma.SortOrder
-  plateNumber?: Prisma.SortOrder
-  year?: Prisma.SortOrder
-  isAvailable?: Prisma.SortOrder
-  fuelLevel?: Prisma.SortOrder
-  latitude?: Prisma.SortOrder
-  longitude?: Prisma.SortOrder
-  bodyTypeId?: Prisma.SortOrder
-  fuelTypeId?: Prisma.SortOrder
-  transmissionTypeId?: Prisma.SortOrder
-  brandId?: Prisma.SortOrder
   modelId?: Prisma.SortOrder
-}
-
-export type VehicleAvgOrderByAggregateInput = {
-  year?: Prisma.SortOrder
-  fuelLevel?: Prisma.SortOrder
-  latitude?: Prisma.SortOrder
-  longitude?: Prisma.SortOrder
 }
 
 export type VehicleMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  vin?: Prisma.SortOrder
-  plateNumber?: Prisma.SortOrder
-  year?: Prisma.SortOrder
-  isAvailable?: Prisma.SortOrder
-  fuelLevel?: Prisma.SortOrder
-  latitude?: Prisma.SortOrder
-  longitude?: Prisma.SortOrder
-  bodyTypeId?: Prisma.SortOrder
-  fuelTypeId?: Prisma.SortOrder
-  transmissionTypeId?: Prisma.SortOrder
-  brandId?: Prisma.SortOrder
   modelId?: Prisma.SortOrder
 }
 
 export type VehicleMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  vin?: Prisma.SortOrder
-  plateNumber?: Prisma.SortOrder
-  year?: Prisma.SortOrder
-  isAvailable?: Prisma.SortOrder
-  fuelLevel?: Prisma.SortOrder
-  latitude?: Prisma.SortOrder
-  longitude?: Prisma.SortOrder
-  bodyTypeId?: Prisma.SortOrder
-  fuelTypeId?: Prisma.SortOrder
-  transmissionTypeId?: Prisma.SortOrder
-  brandId?: Prisma.SortOrder
   modelId?: Prisma.SortOrder
-}
-
-export type VehicleSumOrderByAggregateInput = {
-  year?: Prisma.SortOrder
-  fuelLevel?: Prisma.SortOrder
-  latitude?: Prisma.SortOrder
-  longitude?: Prisma.SortOrder
-}
-
-export type VehicleCreateNestedManyWithoutBodyTypeInput = {
-  create?: Prisma.XOR<Prisma.VehicleCreateWithoutBodyTypeInput, Prisma.VehicleUncheckedCreateWithoutBodyTypeInput> | Prisma.VehicleCreateWithoutBodyTypeInput[] | Prisma.VehicleUncheckedCreateWithoutBodyTypeInput[]
-  connectOrCreate?: Prisma.VehicleCreateOrConnectWithoutBodyTypeInput | Prisma.VehicleCreateOrConnectWithoutBodyTypeInput[]
-  createMany?: Prisma.VehicleCreateManyBodyTypeInputEnvelope
-  connect?: Prisma.VehicleWhereUniqueInput | Prisma.VehicleWhereUniqueInput[]
-}
-
-export type VehicleUncheckedCreateNestedManyWithoutBodyTypeInput = {
-  create?: Prisma.XOR<Prisma.VehicleCreateWithoutBodyTypeInput, Prisma.VehicleUncheckedCreateWithoutBodyTypeInput> | Prisma.VehicleCreateWithoutBodyTypeInput[] | Prisma.VehicleUncheckedCreateWithoutBodyTypeInput[]
-  connectOrCreate?: Prisma.VehicleCreateOrConnectWithoutBodyTypeInput | Prisma.VehicleCreateOrConnectWithoutBodyTypeInput[]
-  createMany?: Prisma.VehicleCreateManyBodyTypeInputEnvelope
-  connect?: Prisma.VehicleWhereUniqueInput | Prisma.VehicleWhereUniqueInput[]
-}
-
-export type VehicleUpdateManyWithoutBodyTypeNestedInput = {
-  create?: Prisma.XOR<Prisma.VehicleCreateWithoutBodyTypeInput, Prisma.VehicleUncheckedCreateWithoutBodyTypeInput> | Prisma.VehicleCreateWithoutBodyTypeInput[] | Prisma.VehicleUncheckedCreateWithoutBodyTypeInput[]
-  connectOrCreate?: Prisma.VehicleCreateOrConnectWithoutBodyTypeInput | Prisma.VehicleCreateOrConnectWithoutBodyTypeInput[]
-  upsert?: Prisma.VehicleUpsertWithWhereUniqueWithoutBodyTypeInput | Prisma.VehicleUpsertWithWhereUniqueWithoutBodyTypeInput[]
-  createMany?: Prisma.VehicleCreateManyBodyTypeInputEnvelope
-  set?: Prisma.VehicleWhereUniqueInput | Prisma.VehicleWhereUniqueInput[]
-  disconnect?: Prisma.VehicleWhereUniqueInput | Prisma.VehicleWhereUniqueInput[]
-  delete?: Prisma.VehicleWhereUniqueInput | Prisma.VehicleWhereUniqueInput[]
-  connect?: Prisma.VehicleWhereUniqueInput | Prisma.VehicleWhereUniqueInput[]
-  update?: Prisma.VehicleUpdateWithWhereUniqueWithoutBodyTypeInput | Prisma.VehicleUpdateWithWhereUniqueWithoutBodyTypeInput[]
-  updateMany?: Prisma.VehicleUpdateManyWithWhereWithoutBodyTypeInput | Prisma.VehicleUpdateManyWithWhereWithoutBodyTypeInput[]
-  deleteMany?: Prisma.VehicleScalarWhereInput | Prisma.VehicleScalarWhereInput[]
-}
-
-export type VehicleUncheckedUpdateManyWithoutBodyTypeNestedInput = {
-  create?: Prisma.XOR<Prisma.VehicleCreateWithoutBodyTypeInput, Prisma.VehicleUncheckedCreateWithoutBodyTypeInput> | Prisma.VehicleCreateWithoutBodyTypeInput[] | Prisma.VehicleUncheckedCreateWithoutBodyTypeInput[]
-  connectOrCreate?: Prisma.VehicleCreateOrConnectWithoutBodyTypeInput | Prisma.VehicleCreateOrConnectWithoutBodyTypeInput[]
-  upsert?: Prisma.VehicleUpsertWithWhereUniqueWithoutBodyTypeInput | Prisma.VehicleUpsertWithWhereUniqueWithoutBodyTypeInput[]
-  createMany?: Prisma.VehicleCreateManyBodyTypeInputEnvelope
-  set?: Prisma.VehicleWhereUniqueInput | Prisma.VehicleWhereUniqueInput[]
-  disconnect?: Prisma.VehicleWhereUniqueInput | Prisma.VehicleWhereUniqueInput[]
-  delete?: Prisma.VehicleWhereUniqueInput | Prisma.VehicleWhereUniqueInput[]
-  connect?: Prisma.VehicleWhereUniqueInput | Prisma.VehicleWhereUniqueInput[]
-  update?: Prisma.VehicleUpdateWithWhereUniqueWithoutBodyTypeInput | Prisma.VehicleUpdateWithWhereUniqueWithoutBodyTypeInput[]
-  updateMany?: Prisma.VehicleUpdateManyWithWhereWithoutBodyTypeInput | Prisma.VehicleUpdateManyWithWhereWithoutBodyTypeInput[]
-  deleteMany?: Prisma.VehicleScalarWhereInput | Prisma.VehicleScalarWhereInput[]
-}
-
-export type VehicleCreateNestedManyWithoutFuelTypeInput = {
-  create?: Prisma.XOR<Prisma.VehicleCreateWithoutFuelTypeInput, Prisma.VehicleUncheckedCreateWithoutFuelTypeInput> | Prisma.VehicleCreateWithoutFuelTypeInput[] | Prisma.VehicleUncheckedCreateWithoutFuelTypeInput[]
-  connectOrCreate?: Prisma.VehicleCreateOrConnectWithoutFuelTypeInput | Prisma.VehicleCreateOrConnectWithoutFuelTypeInput[]
-  createMany?: Prisma.VehicleCreateManyFuelTypeInputEnvelope
-  connect?: Prisma.VehicleWhereUniqueInput | Prisma.VehicleWhereUniqueInput[]
-}
-
-export type VehicleUncheckedCreateNestedManyWithoutFuelTypeInput = {
-  create?: Prisma.XOR<Prisma.VehicleCreateWithoutFuelTypeInput, Prisma.VehicleUncheckedCreateWithoutFuelTypeInput> | Prisma.VehicleCreateWithoutFuelTypeInput[] | Prisma.VehicleUncheckedCreateWithoutFuelTypeInput[]
-  connectOrCreate?: Prisma.VehicleCreateOrConnectWithoutFuelTypeInput | Prisma.VehicleCreateOrConnectWithoutFuelTypeInput[]
-  createMany?: Prisma.VehicleCreateManyFuelTypeInputEnvelope
-  connect?: Prisma.VehicleWhereUniqueInput | Prisma.VehicleWhereUniqueInput[]
-}
-
-export type VehicleUpdateManyWithoutFuelTypeNestedInput = {
-  create?: Prisma.XOR<Prisma.VehicleCreateWithoutFuelTypeInput, Prisma.VehicleUncheckedCreateWithoutFuelTypeInput> | Prisma.VehicleCreateWithoutFuelTypeInput[] | Prisma.VehicleUncheckedCreateWithoutFuelTypeInput[]
-  connectOrCreate?: Prisma.VehicleCreateOrConnectWithoutFuelTypeInput | Prisma.VehicleCreateOrConnectWithoutFuelTypeInput[]
-  upsert?: Prisma.VehicleUpsertWithWhereUniqueWithoutFuelTypeInput | Prisma.VehicleUpsertWithWhereUniqueWithoutFuelTypeInput[]
-  createMany?: Prisma.VehicleCreateManyFuelTypeInputEnvelope
-  set?: Prisma.VehicleWhereUniqueInput | Prisma.VehicleWhereUniqueInput[]
-  disconnect?: Prisma.VehicleWhereUniqueInput | Prisma.VehicleWhereUniqueInput[]
-  delete?: Prisma.VehicleWhereUniqueInput | Prisma.VehicleWhereUniqueInput[]
-  connect?: Prisma.VehicleWhereUniqueInput | Prisma.VehicleWhereUniqueInput[]
-  update?: Prisma.VehicleUpdateWithWhereUniqueWithoutFuelTypeInput | Prisma.VehicleUpdateWithWhereUniqueWithoutFuelTypeInput[]
-  updateMany?: Prisma.VehicleUpdateManyWithWhereWithoutFuelTypeInput | Prisma.VehicleUpdateManyWithWhereWithoutFuelTypeInput[]
-  deleteMany?: Prisma.VehicleScalarWhereInput | Prisma.VehicleScalarWhereInput[]
-}
-
-export type VehicleUncheckedUpdateManyWithoutFuelTypeNestedInput = {
-  create?: Prisma.XOR<Prisma.VehicleCreateWithoutFuelTypeInput, Prisma.VehicleUncheckedCreateWithoutFuelTypeInput> | Prisma.VehicleCreateWithoutFuelTypeInput[] | Prisma.VehicleUncheckedCreateWithoutFuelTypeInput[]
-  connectOrCreate?: Prisma.VehicleCreateOrConnectWithoutFuelTypeInput | Prisma.VehicleCreateOrConnectWithoutFuelTypeInput[]
-  upsert?: Prisma.VehicleUpsertWithWhereUniqueWithoutFuelTypeInput | Prisma.VehicleUpsertWithWhereUniqueWithoutFuelTypeInput[]
-  createMany?: Prisma.VehicleCreateManyFuelTypeInputEnvelope
-  set?: Prisma.VehicleWhereUniqueInput | Prisma.VehicleWhereUniqueInput[]
-  disconnect?: Prisma.VehicleWhereUniqueInput | Prisma.VehicleWhereUniqueInput[]
-  delete?: Prisma.VehicleWhereUniqueInput | Prisma.VehicleWhereUniqueInput[]
-  connect?: Prisma.VehicleWhereUniqueInput | Prisma.VehicleWhereUniqueInput[]
-  update?: Prisma.VehicleUpdateWithWhereUniqueWithoutFuelTypeInput | Prisma.VehicleUpdateWithWhereUniqueWithoutFuelTypeInput[]
-  updateMany?: Prisma.VehicleUpdateManyWithWhereWithoutFuelTypeInput | Prisma.VehicleUpdateManyWithWhereWithoutFuelTypeInput[]
-  deleteMany?: Prisma.VehicleScalarWhereInput | Prisma.VehicleScalarWhereInput[]
-}
-
-export type VehicleCreateNestedManyWithoutTransmissionTypeInput = {
-  create?: Prisma.XOR<Prisma.VehicleCreateWithoutTransmissionTypeInput, Prisma.VehicleUncheckedCreateWithoutTransmissionTypeInput> | Prisma.VehicleCreateWithoutTransmissionTypeInput[] | Prisma.VehicleUncheckedCreateWithoutTransmissionTypeInput[]
-  connectOrCreate?: Prisma.VehicleCreateOrConnectWithoutTransmissionTypeInput | Prisma.VehicleCreateOrConnectWithoutTransmissionTypeInput[]
-  createMany?: Prisma.VehicleCreateManyTransmissionTypeInputEnvelope
-  connect?: Prisma.VehicleWhereUniqueInput | Prisma.VehicleWhereUniqueInput[]
-}
-
-export type VehicleUncheckedCreateNestedManyWithoutTransmissionTypeInput = {
-  create?: Prisma.XOR<Prisma.VehicleCreateWithoutTransmissionTypeInput, Prisma.VehicleUncheckedCreateWithoutTransmissionTypeInput> | Prisma.VehicleCreateWithoutTransmissionTypeInput[] | Prisma.VehicleUncheckedCreateWithoutTransmissionTypeInput[]
-  connectOrCreate?: Prisma.VehicleCreateOrConnectWithoutTransmissionTypeInput | Prisma.VehicleCreateOrConnectWithoutTransmissionTypeInput[]
-  createMany?: Prisma.VehicleCreateManyTransmissionTypeInputEnvelope
-  connect?: Prisma.VehicleWhereUniqueInput | Prisma.VehicleWhereUniqueInput[]
-}
-
-export type VehicleUpdateManyWithoutTransmissionTypeNestedInput = {
-  create?: Prisma.XOR<Prisma.VehicleCreateWithoutTransmissionTypeInput, Prisma.VehicleUncheckedCreateWithoutTransmissionTypeInput> | Prisma.VehicleCreateWithoutTransmissionTypeInput[] | Prisma.VehicleUncheckedCreateWithoutTransmissionTypeInput[]
-  connectOrCreate?: Prisma.VehicleCreateOrConnectWithoutTransmissionTypeInput | Prisma.VehicleCreateOrConnectWithoutTransmissionTypeInput[]
-  upsert?: Prisma.VehicleUpsertWithWhereUniqueWithoutTransmissionTypeInput | Prisma.VehicleUpsertWithWhereUniqueWithoutTransmissionTypeInput[]
-  createMany?: Prisma.VehicleCreateManyTransmissionTypeInputEnvelope
-  set?: Prisma.VehicleWhereUniqueInput | Prisma.VehicleWhereUniqueInput[]
-  disconnect?: Prisma.VehicleWhereUniqueInput | Prisma.VehicleWhereUniqueInput[]
-  delete?: Prisma.VehicleWhereUniqueInput | Prisma.VehicleWhereUniqueInput[]
-  connect?: Prisma.VehicleWhereUniqueInput | Prisma.VehicleWhereUniqueInput[]
-  update?: Prisma.VehicleUpdateWithWhereUniqueWithoutTransmissionTypeInput | Prisma.VehicleUpdateWithWhereUniqueWithoutTransmissionTypeInput[]
-  updateMany?: Prisma.VehicleUpdateManyWithWhereWithoutTransmissionTypeInput | Prisma.VehicleUpdateManyWithWhereWithoutTransmissionTypeInput[]
-  deleteMany?: Prisma.VehicleScalarWhereInput | Prisma.VehicleScalarWhereInput[]
-}
-
-export type VehicleUncheckedUpdateManyWithoutTransmissionTypeNestedInput = {
-  create?: Prisma.XOR<Prisma.VehicleCreateWithoutTransmissionTypeInput, Prisma.VehicleUncheckedCreateWithoutTransmissionTypeInput> | Prisma.VehicleCreateWithoutTransmissionTypeInput[] | Prisma.VehicleUncheckedCreateWithoutTransmissionTypeInput[]
-  connectOrCreate?: Prisma.VehicleCreateOrConnectWithoutTransmissionTypeInput | Prisma.VehicleCreateOrConnectWithoutTransmissionTypeInput[]
-  upsert?: Prisma.VehicleUpsertWithWhereUniqueWithoutTransmissionTypeInput | Prisma.VehicleUpsertWithWhereUniqueWithoutTransmissionTypeInput[]
-  createMany?: Prisma.VehicleCreateManyTransmissionTypeInputEnvelope
-  set?: Prisma.VehicleWhereUniqueInput | Prisma.VehicleWhereUniqueInput[]
-  disconnect?: Prisma.VehicleWhereUniqueInput | Prisma.VehicleWhereUniqueInput[]
-  delete?: Prisma.VehicleWhereUniqueInput | Prisma.VehicleWhereUniqueInput[]
-  connect?: Prisma.VehicleWhereUniqueInput | Prisma.VehicleWhereUniqueInput[]
-  update?: Prisma.VehicleUpdateWithWhereUniqueWithoutTransmissionTypeInput | Prisma.VehicleUpdateWithWhereUniqueWithoutTransmissionTypeInput[]
-  updateMany?: Prisma.VehicleUpdateManyWithWhereWithoutTransmissionTypeInput | Prisma.VehicleUpdateManyWithWhereWithoutTransmissionTypeInput[]
-  deleteMany?: Prisma.VehicleScalarWhereInput | Prisma.VehicleScalarWhereInput[]
-}
-
-export type VehicleCreateNestedManyWithoutBrandInput = {
-  create?: Prisma.XOR<Prisma.VehicleCreateWithoutBrandInput, Prisma.VehicleUncheckedCreateWithoutBrandInput> | Prisma.VehicleCreateWithoutBrandInput[] | Prisma.VehicleUncheckedCreateWithoutBrandInput[]
-  connectOrCreate?: Prisma.VehicleCreateOrConnectWithoutBrandInput | Prisma.VehicleCreateOrConnectWithoutBrandInput[]
-  createMany?: Prisma.VehicleCreateManyBrandInputEnvelope
-  connect?: Prisma.VehicleWhereUniqueInput | Prisma.VehicleWhereUniqueInput[]
-}
-
-export type VehicleUncheckedCreateNestedManyWithoutBrandInput = {
-  create?: Prisma.XOR<Prisma.VehicleCreateWithoutBrandInput, Prisma.VehicleUncheckedCreateWithoutBrandInput> | Prisma.VehicleCreateWithoutBrandInput[] | Prisma.VehicleUncheckedCreateWithoutBrandInput[]
-  connectOrCreate?: Prisma.VehicleCreateOrConnectWithoutBrandInput | Prisma.VehicleCreateOrConnectWithoutBrandInput[]
-  createMany?: Prisma.VehicleCreateManyBrandInputEnvelope
-  connect?: Prisma.VehicleWhereUniqueInput | Prisma.VehicleWhereUniqueInput[]
-}
-
-export type VehicleUpdateManyWithoutBrandNestedInput = {
-  create?: Prisma.XOR<Prisma.VehicleCreateWithoutBrandInput, Prisma.VehicleUncheckedCreateWithoutBrandInput> | Prisma.VehicleCreateWithoutBrandInput[] | Prisma.VehicleUncheckedCreateWithoutBrandInput[]
-  connectOrCreate?: Prisma.VehicleCreateOrConnectWithoutBrandInput | Prisma.VehicleCreateOrConnectWithoutBrandInput[]
-  upsert?: Prisma.VehicleUpsertWithWhereUniqueWithoutBrandInput | Prisma.VehicleUpsertWithWhereUniqueWithoutBrandInput[]
-  createMany?: Prisma.VehicleCreateManyBrandInputEnvelope
-  set?: Prisma.VehicleWhereUniqueInput | Prisma.VehicleWhereUniqueInput[]
-  disconnect?: Prisma.VehicleWhereUniqueInput | Prisma.VehicleWhereUniqueInput[]
-  delete?: Prisma.VehicleWhereUniqueInput | Prisma.VehicleWhereUniqueInput[]
-  connect?: Prisma.VehicleWhereUniqueInput | Prisma.VehicleWhereUniqueInput[]
-  update?: Prisma.VehicleUpdateWithWhereUniqueWithoutBrandInput | Prisma.VehicleUpdateWithWhereUniqueWithoutBrandInput[]
-  updateMany?: Prisma.VehicleUpdateManyWithWhereWithoutBrandInput | Prisma.VehicleUpdateManyWithWhereWithoutBrandInput[]
-  deleteMany?: Prisma.VehicleScalarWhereInput | Prisma.VehicleScalarWhereInput[]
-}
-
-export type VehicleUncheckedUpdateManyWithoutBrandNestedInput = {
-  create?: Prisma.XOR<Prisma.VehicleCreateWithoutBrandInput, Prisma.VehicleUncheckedCreateWithoutBrandInput> | Prisma.VehicleCreateWithoutBrandInput[] | Prisma.VehicleUncheckedCreateWithoutBrandInput[]
-  connectOrCreate?: Prisma.VehicleCreateOrConnectWithoutBrandInput | Prisma.VehicleCreateOrConnectWithoutBrandInput[]
-  upsert?: Prisma.VehicleUpsertWithWhereUniqueWithoutBrandInput | Prisma.VehicleUpsertWithWhereUniqueWithoutBrandInput[]
-  createMany?: Prisma.VehicleCreateManyBrandInputEnvelope
-  set?: Prisma.VehicleWhereUniqueInput | Prisma.VehicleWhereUniqueInput[]
-  disconnect?: Prisma.VehicleWhereUniqueInput | Prisma.VehicleWhereUniqueInput[]
-  delete?: Prisma.VehicleWhereUniqueInput | Prisma.VehicleWhereUniqueInput[]
-  connect?: Prisma.VehicleWhereUniqueInput | Prisma.VehicleWhereUniqueInput[]
-  update?: Prisma.VehicleUpdateWithWhereUniqueWithoutBrandInput | Prisma.VehicleUpdateWithWhereUniqueWithoutBrandInput[]
-  updateMany?: Prisma.VehicleUpdateManyWithWhereWithoutBrandInput | Prisma.VehicleUpdateManyWithWhereWithoutBrandInput[]
-  deleteMany?: Prisma.VehicleScalarWhereInput | Prisma.VehicleScalarWhereInput[]
 }
 
 export type VehicleCreateNestedManyWithoutModelInput = {
@@ -773,297 +293,12 @@ export type VehicleUncheckedUpdateManyWithoutModelNestedInput = {
   deleteMany?: Prisma.VehicleScalarWhereInput | Prisma.VehicleScalarWhereInput[]
 }
 
-export type IntFieldUpdateOperationsInput = {
-  set?: number
-  increment?: number
-  decrement?: number
-  multiply?: number
-  divide?: number
-}
-
-export type BoolFieldUpdateOperationsInput = {
-  set?: boolean
-}
-
-export type DecimalFieldUpdateOperationsInput = {
-  set?: runtime.Decimal | runtime.DecimalJsLike | number | string
-  increment?: runtime.Decimal | runtime.DecimalJsLike | number | string
-  decrement?: runtime.Decimal | runtime.DecimalJsLike | number | string
-  multiply?: runtime.Decimal | runtime.DecimalJsLike | number | string
-  divide?: runtime.Decimal | runtime.DecimalJsLike | number | string
-}
-
-export type VehicleCreateWithoutBodyTypeInput = {
-  id?: string
-  vin: string
-  plateNumber: string
-  year: number
-  isAvailable?: boolean
-  fuelLevel?: number
-  latitude: runtime.Decimal | runtime.DecimalJsLike | number | string
-  longitude: runtime.Decimal | runtime.DecimalJsLike | number | string
-  fuelType: Prisma.FuelTypeCreateNestedOneWithoutVehiclesInput
-  transmissionType: Prisma.TransmissionTypeCreateNestedOneWithoutVehiclesInput
-  brand: Prisma.BrandCreateNestedOneWithoutVehiclesInput
-  model: Prisma.ModelCreateNestedOneWithoutVehiclesInput
-}
-
-export type VehicleUncheckedCreateWithoutBodyTypeInput = {
-  id?: string
-  vin: string
-  plateNumber: string
-  year: number
-  isAvailable?: boolean
-  fuelLevel?: number
-  latitude: runtime.Decimal | runtime.DecimalJsLike | number | string
-  longitude: runtime.Decimal | runtime.DecimalJsLike | number | string
-  fuelTypeId: string
-  transmissionTypeId: string
-  brandId: string
-  modelId: string
-}
-
-export type VehicleCreateOrConnectWithoutBodyTypeInput = {
-  where: Prisma.VehicleWhereUniqueInput
-  create: Prisma.XOR<Prisma.VehicleCreateWithoutBodyTypeInput, Prisma.VehicleUncheckedCreateWithoutBodyTypeInput>
-}
-
-export type VehicleCreateManyBodyTypeInputEnvelope = {
-  data: Prisma.VehicleCreateManyBodyTypeInput | Prisma.VehicleCreateManyBodyTypeInput[]
-  skipDuplicates?: boolean
-}
-
-export type VehicleUpsertWithWhereUniqueWithoutBodyTypeInput = {
-  where: Prisma.VehicleWhereUniqueInput
-  update: Prisma.XOR<Prisma.VehicleUpdateWithoutBodyTypeInput, Prisma.VehicleUncheckedUpdateWithoutBodyTypeInput>
-  create: Prisma.XOR<Prisma.VehicleCreateWithoutBodyTypeInput, Prisma.VehicleUncheckedCreateWithoutBodyTypeInput>
-}
-
-export type VehicleUpdateWithWhereUniqueWithoutBodyTypeInput = {
-  where: Prisma.VehicleWhereUniqueInput
-  data: Prisma.XOR<Prisma.VehicleUpdateWithoutBodyTypeInput, Prisma.VehicleUncheckedUpdateWithoutBodyTypeInput>
-}
-
-export type VehicleUpdateManyWithWhereWithoutBodyTypeInput = {
-  where: Prisma.VehicleScalarWhereInput
-  data: Prisma.XOR<Prisma.VehicleUpdateManyMutationInput, Prisma.VehicleUncheckedUpdateManyWithoutBodyTypeInput>
-}
-
-export type VehicleScalarWhereInput = {
-  AND?: Prisma.VehicleScalarWhereInput | Prisma.VehicleScalarWhereInput[]
-  OR?: Prisma.VehicleScalarWhereInput[]
-  NOT?: Prisma.VehicleScalarWhereInput | Prisma.VehicleScalarWhereInput[]
-  id?: Prisma.StringFilter<"Vehicle"> | string
-  vin?: Prisma.StringFilter<"Vehicle"> | string
-  plateNumber?: Prisma.StringFilter<"Vehicle"> | string
-  year?: Prisma.IntFilter<"Vehicle"> | number
-  isAvailable?: Prisma.BoolFilter<"Vehicle"> | boolean
-  fuelLevel?: Prisma.IntFilter<"Vehicle"> | number
-  latitude?: Prisma.DecimalFilter<"Vehicle"> | runtime.Decimal | runtime.DecimalJsLike | number | string
-  longitude?: Prisma.DecimalFilter<"Vehicle"> | runtime.Decimal | runtime.DecimalJsLike | number | string
-  bodyTypeId?: Prisma.StringFilter<"Vehicle"> | string
-  fuelTypeId?: Prisma.StringFilter<"Vehicle"> | string
-  transmissionTypeId?: Prisma.StringFilter<"Vehicle"> | string
-  brandId?: Prisma.StringFilter<"Vehicle"> | string
-  modelId?: Prisma.StringFilter<"Vehicle"> | string
-}
-
-export type VehicleCreateWithoutFuelTypeInput = {
-  id?: string
-  vin: string
-  plateNumber: string
-  year: number
-  isAvailable?: boolean
-  fuelLevel?: number
-  latitude: runtime.Decimal | runtime.DecimalJsLike | number | string
-  longitude: runtime.Decimal | runtime.DecimalJsLike | number | string
-  bodyType: Prisma.BodyTypeCreateNestedOneWithoutVehiclesInput
-  transmissionType: Prisma.TransmissionTypeCreateNestedOneWithoutVehiclesInput
-  brand: Prisma.BrandCreateNestedOneWithoutVehiclesInput
-  model: Prisma.ModelCreateNestedOneWithoutVehiclesInput
-}
-
-export type VehicleUncheckedCreateWithoutFuelTypeInput = {
-  id?: string
-  vin: string
-  plateNumber: string
-  year: number
-  isAvailable?: boolean
-  fuelLevel?: number
-  latitude: runtime.Decimal | runtime.DecimalJsLike | number | string
-  longitude: runtime.Decimal | runtime.DecimalJsLike | number | string
-  bodyTypeId: string
-  transmissionTypeId: string
-  brandId: string
-  modelId: string
-}
-
-export type VehicleCreateOrConnectWithoutFuelTypeInput = {
-  where: Prisma.VehicleWhereUniqueInput
-  create: Prisma.XOR<Prisma.VehicleCreateWithoutFuelTypeInput, Prisma.VehicleUncheckedCreateWithoutFuelTypeInput>
-}
-
-export type VehicleCreateManyFuelTypeInputEnvelope = {
-  data: Prisma.VehicleCreateManyFuelTypeInput | Prisma.VehicleCreateManyFuelTypeInput[]
-  skipDuplicates?: boolean
-}
-
-export type VehicleUpsertWithWhereUniqueWithoutFuelTypeInput = {
-  where: Prisma.VehicleWhereUniqueInput
-  update: Prisma.XOR<Prisma.VehicleUpdateWithoutFuelTypeInput, Prisma.VehicleUncheckedUpdateWithoutFuelTypeInput>
-  create: Prisma.XOR<Prisma.VehicleCreateWithoutFuelTypeInput, Prisma.VehicleUncheckedCreateWithoutFuelTypeInput>
-}
-
-export type VehicleUpdateWithWhereUniqueWithoutFuelTypeInput = {
-  where: Prisma.VehicleWhereUniqueInput
-  data: Prisma.XOR<Prisma.VehicleUpdateWithoutFuelTypeInput, Prisma.VehicleUncheckedUpdateWithoutFuelTypeInput>
-}
-
-export type VehicleUpdateManyWithWhereWithoutFuelTypeInput = {
-  where: Prisma.VehicleScalarWhereInput
-  data: Prisma.XOR<Prisma.VehicleUpdateManyMutationInput, Prisma.VehicleUncheckedUpdateManyWithoutFuelTypeInput>
-}
-
-export type VehicleCreateWithoutTransmissionTypeInput = {
-  id?: string
-  vin: string
-  plateNumber: string
-  year: number
-  isAvailable?: boolean
-  fuelLevel?: number
-  latitude: runtime.Decimal | runtime.DecimalJsLike | number | string
-  longitude: runtime.Decimal | runtime.DecimalJsLike | number | string
-  bodyType: Prisma.BodyTypeCreateNestedOneWithoutVehiclesInput
-  fuelType: Prisma.FuelTypeCreateNestedOneWithoutVehiclesInput
-  brand: Prisma.BrandCreateNestedOneWithoutVehiclesInput
-  model: Prisma.ModelCreateNestedOneWithoutVehiclesInput
-}
-
-export type VehicleUncheckedCreateWithoutTransmissionTypeInput = {
-  id?: string
-  vin: string
-  plateNumber: string
-  year: number
-  isAvailable?: boolean
-  fuelLevel?: number
-  latitude: runtime.Decimal | runtime.DecimalJsLike | number | string
-  longitude: runtime.Decimal | runtime.DecimalJsLike | number | string
-  bodyTypeId: string
-  fuelTypeId: string
-  brandId: string
-  modelId: string
-}
-
-export type VehicleCreateOrConnectWithoutTransmissionTypeInput = {
-  where: Prisma.VehicleWhereUniqueInput
-  create: Prisma.XOR<Prisma.VehicleCreateWithoutTransmissionTypeInput, Prisma.VehicleUncheckedCreateWithoutTransmissionTypeInput>
-}
-
-export type VehicleCreateManyTransmissionTypeInputEnvelope = {
-  data: Prisma.VehicleCreateManyTransmissionTypeInput | Prisma.VehicleCreateManyTransmissionTypeInput[]
-  skipDuplicates?: boolean
-}
-
-export type VehicleUpsertWithWhereUniqueWithoutTransmissionTypeInput = {
-  where: Prisma.VehicleWhereUniqueInput
-  update: Prisma.XOR<Prisma.VehicleUpdateWithoutTransmissionTypeInput, Prisma.VehicleUncheckedUpdateWithoutTransmissionTypeInput>
-  create: Prisma.XOR<Prisma.VehicleCreateWithoutTransmissionTypeInput, Prisma.VehicleUncheckedCreateWithoutTransmissionTypeInput>
-}
-
-export type VehicleUpdateWithWhereUniqueWithoutTransmissionTypeInput = {
-  where: Prisma.VehicleWhereUniqueInput
-  data: Prisma.XOR<Prisma.VehicleUpdateWithoutTransmissionTypeInput, Prisma.VehicleUncheckedUpdateWithoutTransmissionTypeInput>
-}
-
-export type VehicleUpdateManyWithWhereWithoutTransmissionTypeInput = {
-  where: Prisma.VehicleScalarWhereInput
-  data: Prisma.XOR<Prisma.VehicleUpdateManyMutationInput, Prisma.VehicleUncheckedUpdateManyWithoutTransmissionTypeInput>
-}
-
-export type VehicleCreateWithoutBrandInput = {
-  id?: string
-  vin: string
-  plateNumber: string
-  year: number
-  isAvailable?: boolean
-  fuelLevel?: number
-  latitude: runtime.Decimal | runtime.DecimalJsLike | number | string
-  longitude: runtime.Decimal | runtime.DecimalJsLike | number | string
-  bodyType: Prisma.BodyTypeCreateNestedOneWithoutVehiclesInput
-  fuelType: Prisma.FuelTypeCreateNestedOneWithoutVehiclesInput
-  transmissionType: Prisma.TransmissionTypeCreateNestedOneWithoutVehiclesInput
-  model: Prisma.ModelCreateNestedOneWithoutVehiclesInput
-}
-
-export type VehicleUncheckedCreateWithoutBrandInput = {
-  id?: string
-  vin: string
-  plateNumber: string
-  year: number
-  isAvailable?: boolean
-  fuelLevel?: number
-  latitude: runtime.Decimal | runtime.DecimalJsLike | number | string
-  longitude: runtime.Decimal | runtime.DecimalJsLike | number | string
-  bodyTypeId: string
-  fuelTypeId: string
-  transmissionTypeId: string
-  modelId: string
-}
-
-export type VehicleCreateOrConnectWithoutBrandInput = {
-  where: Prisma.VehicleWhereUniqueInput
-  create: Prisma.XOR<Prisma.VehicleCreateWithoutBrandInput, Prisma.VehicleUncheckedCreateWithoutBrandInput>
-}
-
-export type VehicleCreateManyBrandInputEnvelope = {
-  data: Prisma.VehicleCreateManyBrandInput | Prisma.VehicleCreateManyBrandInput[]
-  skipDuplicates?: boolean
-}
-
-export type VehicleUpsertWithWhereUniqueWithoutBrandInput = {
-  where: Prisma.VehicleWhereUniqueInput
-  update: Prisma.XOR<Prisma.VehicleUpdateWithoutBrandInput, Prisma.VehicleUncheckedUpdateWithoutBrandInput>
-  create: Prisma.XOR<Prisma.VehicleCreateWithoutBrandInput, Prisma.VehicleUncheckedCreateWithoutBrandInput>
-}
-
-export type VehicleUpdateWithWhereUniqueWithoutBrandInput = {
-  where: Prisma.VehicleWhereUniqueInput
-  data: Prisma.XOR<Prisma.VehicleUpdateWithoutBrandInput, Prisma.VehicleUncheckedUpdateWithoutBrandInput>
-}
-
-export type VehicleUpdateManyWithWhereWithoutBrandInput = {
-  where: Prisma.VehicleScalarWhereInput
-  data: Prisma.XOR<Prisma.VehicleUpdateManyMutationInput, Prisma.VehicleUncheckedUpdateManyWithoutBrandInput>
-}
-
 export type VehicleCreateWithoutModelInput = {
   id?: string
-  vin: string
-  plateNumber: string
-  year: number
-  isAvailable?: boolean
-  fuelLevel?: number
-  latitude: runtime.Decimal | runtime.DecimalJsLike | number | string
-  longitude: runtime.Decimal | runtime.DecimalJsLike | number | string
-  bodyType: Prisma.BodyTypeCreateNestedOneWithoutVehiclesInput
-  fuelType: Prisma.FuelTypeCreateNestedOneWithoutVehiclesInput
-  transmissionType: Prisma.TransmissionTypeCreateNestedOneWithoutVehiclesInput
-  brand: Prisma.BrandCreateNestedOneWithoutVehiclesInput
 }
 
 export type VehicleUncheckedCreateWithoutModelInput = {
   id?: string
-  vin: string
-  plateNumber: string
-  year: number
-  isAvailable?: boolean
-  fuelLevel?: number
-  latitude: runtime.Decimal | runtime.DecimalJsLike | number | string
-  longitude: runtime.Decimal | runtime.DecimalJsLike | number | string
-  bodyTypeId: string
-  fuelTypeId: string
-  transmissionTypeId: string
-  brandId: string
 }
 
 export type VehicleCreateOrConnectWithoutModelInput = {
@@ -1092,432 +327,73 @@ export type VehicleUpdateManyWithWhereWithoutModelInput = {
   data: Prisma.XOR<Prisma.VehicleUpdateManyMutationInput, Prisma.VehicleUncheckedUpdateManyWithoutModelInput>
 }
 
-export type VehicleCreateManyBodyTypeInput = {
-  id?: string
-  vin: string
-  plateNumber: string
-  year: number
-  isAvailable?: boolean
-  fuelLevel?: number
-  latitude: runtime.Decimal | runtime.DecimalJsLike | number | string
-  longitude: runtime.Decimal | runtime.DecimalJsLike | number | string
-  fuelTypeId: string
-  transmissionTypeId: string
-  brandId: string
-  modelId: string
-}
-
-export type VehicleUpdateWithoutBodyTypeInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  vin?: Prisma.StringFieldUpdateOperationsInput | string
-  plateNumber?: Prisma.StringFieldUpdateOperationsInput | string
-  year?: Prisma.IntFieldUpdateOperationsInput | number
-  isAvailable?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  fuelLevel?: Prisma.IntFieldUpdateOperationsInput | number
-  latitude?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
-  longitude?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
-  fuelType?: Prisma.FuelTypeUpdateOneRequiredWithoutVehiclesNestedInput
-  transmissionType?: Prisma.TransmissionTypeUpdateOneRequiredWithoutVehiclesNestedInput
-  brand?: Prisma.BrandUpdateOneRequiredWithoutVehiclesNestedInput
-  model?: Prisma.ModelUpdateOneRequiredWithoutVehiclesNestedInput
-}
-
-export type VehicleUncheckedUpdateWithoutBodyTypeInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  vin?: Prisma.StringFieldUpdateOperationsInput | string
-  plateNumber?: Prisma.StringFieldUpdateOperationsInput | string
-  year?: Prisma.IntFieldUpdateOperationsInput | number
-  isAvailable?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  fuelLevel?: Prisma.IntFieldUpdateOperationsInput | number
-  latitude?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
-  longitude?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
-  fuelTypeId?: Prisma.StringFieldUpdateOperationsInput | string
-  transmissionTypeId?: Prisma.StringFieldUpdateOperationsInput | string
-  brandId?: Prisma.StringFieldUpdateOperationsInput | string
-  modelId?: Prisma.StringFieldUpdateOperationsInput | string
-}
-
-export type VehicleUncheckedUpdateManyWithoutBodyTypeInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  vin?: Prisma.StringFieldUpdateOperationsInput | string
-  plateNumber?: Prisma.StringFieldUpdateOperationsInput | string
-  year?: Prisma.IntFieldUpdateOperationsInput | number
-  isAvailable?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  fuelLevel?: Prisma.IntFieldUpdateOperationsInput | number
-  latitude?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
-  longitude?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
-  fuelTypeId?: Prisma.StringFieldUpdateOperationsInput | string
-  transmissionTypeId?: Prisma.StringFieldUpdateOperationsInput | string
-  brandId?: Prisma.StringFieldUpdateOperationsInput | string
-  modelId?: Prisma.StringFieldUpdateOperationsInput | string
-}
-
-export type VehicleCreateManyFuelTypeInput = {
-  id?: string
-  vin: string
-  plateNumber: string
-  year: number
-  isAvailable?: boolean
-  fuelLevel?: number
-  latitude: runtime.Decimal | runtime.DecimalJsLike | number | string
-  longitude: runtime.Decimal | runtime.DecimalJsLike | number | string
-  bodyTypeId: string
-  transmissionTypeId: string
-  brandId: string
-  modelId: string
-}
-
-export type VehicleUpdateWithoutFuelTypeInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  vin?: Prisma.StringFieldUpdateOperationsInput | string
-  plateNumber?: Prisma.StringFieldUpdateOperationsInput | string
-  year?: Prisma.IntFieldUpdateOperationsInput | number
-  isAvailable?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  fuelLevel?: Prisma.IntFieldUpdateOperationsInput | number
-  latitude?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
-  longitude?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
-  bodyType?: Prisma.BodyTypeUpdateOneRequiredWithoutVehiclesNestedInput
-  transmissionType?: Prisma.TransmissionTypeUpdateOneRequiredWithoutVehiclesNestedInput
-  brand?: Prisma.BrandUpdateOneRequiredWithoutVehiclesNestedInput
-  model?: Prisma.ModelUpdateOneRequiredWithoutVehiclesNestedInput
-}
-
-export type VehicleUncheckedUpdateWithoutFuelTypeInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  vin?: Prisma.StringFieldUpdateOperationsInput | string
-  plateNumber?: Prisma.StringFieldUpdateOperationsInput | string
-  year?: Prisma.IntFieldUpdateOperationsInput | number
-  isAvailable?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  fuelLevel?: Prisma.IntFieldUpdateOperationsInput | number
-  latitude?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
-  longitude?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
-  bodyTypeId?: Prisma.StringFieldUpdateOperationsInput | string
-  transmissionTypeId?: Prisma.StringFieldUpdateOperationsInput | string
-  brandId?: Prisma.StringFieldUpdateOperationsInput | string
-  modelId?: Prisma.StringFieldUpdateOperationsInput | string
-}
-
-export type VehicleUncheckedUpdateManyWithoutFuelTypeInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  vin?: Prisma.StringFieldUpdateOperationsInput | string
-  plateNumber?: Prisma.StringFieldUpdateOperationsInput | string
-  year?: Prisma.IntFieldUpdateOperationsInput | number
-  isAvailable?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  fuelLevel?: Prisma.IntFieldUpdateOperationsInput | number
-  latitude?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
-  longitude?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
-  bodyTypeId?: Prisma.StringFieldUpdateOperationsInput | string
-  transmissionTypeId?: Prisma.StringFieldUpdateOperationsInput | string
-  brandId?: Prisma.StringFieldUpdateOperationsInput | string
-  modelId?: Prisma.StringFieldUpdateOperationsInput | string
-}
-
-export type VehicleCreateManyTransmissionTypeInput = {
-  id?: string
-  vin: string
-  plateNumber: string
-  year: number
-  isAvailable?: boolean
-  fuelLevel?: number
-  latitude: runtime.Decimal | runtime.DecimalJsLike | number | string
-  longitude: runtime.Decimal | runtime.DecimalJsLike | number | string
-  bodyTypeId: string
-  fuelTypeId: string
-  brandId: string
-  modelId: string
-}
-
-export type VehicleUpdateWithoutTransmissionTypeInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  vin?: Prisma.StringFieldUpdateOperationsInput | string
-  plateNumber?: Prisma.StringFieldUpdateOperationsInput | string
-  year?: Prisma.IntFieldUpdateOperationsInput | number
-  isAvailable?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  fuelLevel?: Prisma.IntFieldUpdateOperationsInput | number
-  latitude?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
-  longitude?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
-  bodyType?: Prisma.BodyTypeUpdateOneRequiredWithoutVehiclesNestedInput
-  fuelType?: Prisma.FuelTypeUpdateOneRequiredWithoutVehiclesNestedInput
-  brand?: Prisma.BrandUpdateOneRequiredWithoutVehiclesNestedInput
-  model?: Prisma.ModelUpdateOneRequiredWithoutVehiclesNestedInput
-}
-
-export type VehicleUncheckedUpdateWithoutTransmissionTypeInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  vin?: Prisma.StringFieldUpdateOperationsInput | string
-  plateNumber?: Prisma.StringFieldUpdateOperationsInput | string
-  year?: Prisma.IntFieldUpdateOperationsInput | number
-  isAvailable?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  fuelLevel?: Prisma.IntFieldUpdateOperationsInput | number
-  latitude?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
-  longitude?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
-  bodyTypeId?: Prisma.StringFieldUpdateOperationsInput | string
-  fuelTypeId?: Prisma.StringFieldUpdateOperationsInput | string
-  brandId?: Prisma.StringFieldUpdateOperationsInput | string
-  modelId?: Prisma.StringFieldUpdateOperationsInput | string
-}
-
-export type VehicleUncheckedUpdateManyWithoutTransmissionTypeInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  vin?: Prisma.StringFieldUpdateOperationsInput | string
-  plateNumber?: Prisma.StringFieldUpdateOperationsInput | string
-  year?: Prisma.IntFieldUpdateOperationsInput | number
-  isAvailable?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  fuelLevel?: Prisma.IntFieldUpdateOperationsInput | number
-  latitude?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
-  longitude?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
-  bodyTypeId?: Prisma.StringFieldUpdateOperationsInput | string
-  fuelTypeId?: Prisma.StringFieldUpdateOperationsInput | string
-  brandId?: Prisma.StringFieldUpdateOperationsInput | string
-  modelId?: Prisma.StringFieldUpdateOperationsInput | string
-}
-
-export type VehicleCreateManyBrandInput = {
-  id?: string
-  vin: string
-  plateNumber: string
-  year: number
-  isAvailable?: boolean
-  fuelLevel?: number
-  latitude: runtime.Decimal | runtime.DecimalJsLike | number | string
-  longitude: runtime.Decimal | runtime.DecimalJsLike | number | string
-  bodyTypeId: string
-  fuelTypeId: string
-  transmissionTypeId: string
-  modelId: string
-}
-
-export type VehicleUpdateWithoutBrandInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  vin?: Prisma.StringFieldUpdateOperationsInput | string
-  plateNumber?: Prisma.StringFieldUpdateOperationsInput | string
-  year?: Prisma.IntFieldUpdateOperationsInput | number
-  isAvailable?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  fuelLevel?: Prisma.IntFieldUpdateOperationsInput | number
-  latitude?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
-  longitude?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
-  bodyType?: Prisma.BodyTypeUpdateOneRequiredWithoutVehiclesNestedInput
-  fuelType?: Prisma.FuelTypeUpdateOneRequiredWithoutVehiclesNestedInput
-  transmissionType?: Prisma.TransmissionTypeUpdateOneRequiredWithoutVehiclesNestedInput
-  model?: Prisma.ModelUpdateOneRequiredWithoutVehiclesNestedInput
-}
-
-export type VehicleUncheckedUpdateWithoutBrandInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  vin?: Prisma.StringFieldUpdateOperationsInput | string
-  plateNumber?: Prisma.StringFieldUpdateOperationsInput | string
-  year?: Prisma.IntFieldUpdateOperationsInput | number
-  isAvailable?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  fuelLevel?: Prisma.IntFieldUpdateOperationsInput | number
-  latitude?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
-  longitude?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
-  bodyTypeId?: Prisma.StringFieldUpdateOperationsInput | string
-  fuelTypeId?: Prisma.StringFieldUpdateOperationsInput | string
-  transmissionTypeId?: Prisma.StringFieldUpdateOperationsInput | string
-  modelId?: Prisma.StringFieldUpdateOperationsInput | string
-}
-
-export type VehicleUncheckedUpdateManyWithoutBrandInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  vin?: Prisma.StringFieldUpdateOperationsInput | string
-  plateNumber?: Prisma.StringFieldUpdateOperationsInput | string
-  year?: Prisma.IntFieldUpdateOperationsInput | number
-  isAvailable?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  fuelLevel?: Prisma.IntFieldUpdateOperationsInput | number
-  latitude?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
-  longitude?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
-  bodyTypeId?: Prisma.StringFieldUpdateOperationsInput | string
-  fuelTypeId?: Prisma.StringFieldUpdateOperationsInput | string
-  transmissionTypeId?: Prisma.StringFieldUpdateOperationsInput | string
-  modelId?: Prisma.StringFieldUpdateOperationsInput | string
+export type VehicleScalarWhereInput = {
+  AND?: Prisma.VehicleScalarWhereInput | Prisma.VehicleScalarWhereInput[]
+  OR?: Prisma.VehicleScalarWhereInput[]
+  NOT?: Prisma.VehicleScalarWhereInput | Prisma.VehicleScalarWhereInput[]
+  id?: Prisma.StringFilter<"Vehicle"> | string
+  modelId?: Prisma.StringFilter<"Vehicle"> | string
 }
 
 export type VehicleCreateManyModelInput = {
   id?: string
-  vin: string
-  plateNumber: string
-  year: number
-  isAvailable?: boolean
-  fuelLevel?: number
-  latitude: runtime.Decimal | runtime.DecimalJsLike | number | string
-  longitude: runtime.Decimal | runtime.DecimalJsLike | number | string
-  bodyTypeId: string
-  fuelTypeId: string
-  transmissionTypeId: string
-  brandId: string
 }
 
 export type VehicleUpdateWithoutModelInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  vin?: Prisma.StringFieldUpdateOperationsInput | string
-  plateNumber?: Prisma.StringFieldUpdateOperationsInput | string
-  year?: Prisma.IntFieldUpdateOperationsInput | number
-  isAvailable?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  fuelLevel?: Prisma.IntFieldUpdateOperationsInput | number
-  latitude?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
-  longitude?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
-  bodyType?: Prisma.BodyTypeUpdateOneRequiredWithoutVehiclesNestedInput
-  fuelType?: Prisma.FuelTypeUpdateOneRequiredWithoutVehiclesNestedInput
-  transmissionType?: Prisma.TransmissionTypeUpdateOneRequiredWithoutVehiclesNestedInput
-  brand?: Prisma.BrandUpdateOneRequiredWithoutVehiclesNestedInput
 }
 
 export type VehicleUncheckedUpdateWithoutModelInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  vin?: Prisma.StringFieldUpdateOperationsInput | string
-  plateNumber?: Prisma.StringFieldUpdateOperationsInput | string
-  year?: Prisma.IntFieldUpdateOperationsInput | number
-  isAvailable?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  fuelLevel?: Prisma.IntFieldUpdateOperationsInput | number
-  latitude?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
-  longitude?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
-  bodyTypeId?: Prisma.StringFieldUpdateOperationsInput | string
-  fuelTypeId?: Prisma.StringFieldUpdateOperationsInput | string
-  transmissionTypeId?: Prisma.StringFieldUpdateOperationsInput | string
-  brandId?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
 export type VehicleUncheckedUpdateManyWithoutModelInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  vin?: Prisma.StringFieldUpdateOperationsInput | string
-  plateNumber?: Prisma.StringFieldUpdateOperationsInput | string
-  year?: Prisma.IntFieldUpdateOperationsInput | number
-  isAvailable?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  fuelLevel?: Prisma.IntFieldUpdateOperationsInput | number
-  latitude?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
-  longitude?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
-  bodyTypeId?: Prisma.StringFieldUpdateOperationsInput | string
-  fuelTypeId?: Prisma.StringFieldUpdateOperationsInput | string
-  transmissionTypeId?: Prisma.StringFieldUpdateOperationsInput | string
-  brandId?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
 
 
 export type VehicleSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
-  vin?: boolean
-  plateNumber?: boolean
-  year?: boolean
-  isAvailable?: boolean
-  fuelLevel?: boolean
-  latitude?: boolean
-  longitude?: boolean
-  bodyTypeId?: boolean
-  fuelTypeId?: boolean
-  transmissionTypeId?: boolean
-  brandId?: boolean
   modelId?: boolean
-  bodyType?: boolean | Prisma.BodyTypeDefaultArgs<ExtArgs>
-  fuelType?: boolean | Prisma.FuelTypeDefaultArgs<ExtArgs>
-  transmissionType?: boolean | Prisma.TransmissionTypeDefaultArgs<ExtArgs>
-  brand?: boolean | Prisma.BrandDefaultArgs<ExtArgs>
   model?: boolean | Prisma.ModelDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["vehicle"]>
 
 export type VehicleSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
-  vin?: boolean
-  plateNumber?: boolean
-  year?: boolean
-  isAvailable?: boolean
-  fuelLevel?: boolean
-  latitude?: boolean
-  longitude?: boolean
-  bodyTypeId?: boolean
-  fuelTypeId?: boolean
-  transmissionTypeId?: boolean
-  brandId?: boolean
   modelId?: boolean
-  bodyType?: boolean | Prisma.BodyTypeDefaultArgs<ExtArgs>
-  fuelType?: boolean | Prisma.FuelTypeDefaultArgs<ExtArgs>
-  transmissionType?: boolean | Prisma.TransmissionTypeDefaultArgs<ExtArgs>
-  brand?: boolean | Prisma.BrandDefaultArgs<ExtArgs>
   model?: boolean | Prisma.ModelDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["vehicle"]>
 
 export type VehicleSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
-  vin?: boolean
-  plateNumber?: boolean
-  year?: boolean
-  isAvailable?: boolean
-  fuelLevel?: boolean
-  latitude?: boolean
-  longitude?: boolean
-  bodyTypeId?: boolean
-  fuelTypeId?: boolean
-  transmissionTypeId?: boolean
-  brandId?: boolean
   modelId?: boolean
-  bodyType?: boolean | Prisma.BodyTypeDefaultArgs<ExtArgs>
-  fuelType?: boolean | Prisma.FuelTypeDefaultArgs<ExtArgs>
-  transmissionType?: boolean | Prisma.TransmissionTypeDefaultArgs<ExtArgs>
-  brand?: boolean | Prisma.BrandDefaultArgs<ExtArgs>
   model?: boolean | Prisma.ModelDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["vehicle"]>
 
 export type VehicleSelectScalar = {
   id?: boolean
-  vin?: boolean
-  plateNumber?: boolean
-  year?: boolean
-  isAvailable?: boolean
-  fuelLevel?: boolean
-  latitude?: boolean
-  longitude?: boolean
-  bodyTypeId?: boolean
-  fuelTypeId?: boolean
-  transmissionTypeId?: boolean
-  brandId?: boolean
   modelId?: boolean
 }
 
-export type VehicleOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "vin" | "plateNumber" | "year" | "isAvailable" | "fuelLevel" | "latitude" | "longitude" | "bodyTypeId" | "fuelTypeId" | "transmissionTypeId" | "brandId" | "modelId", ExtArgs["result"]["vehicle"]>
+export type VehicleOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "modelId", ExtArgs["result"]["vehicle"]>
 export type VehicleInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  bodyType?: boolean | Prisma.BodyTypeDefaultArgs<ExtArgs>
-  fuelType?: boolean | Prisma.FuelTypeDefaultArgs<ExtArgs>
-  transmissionType?: boolean | Prisma.TransmissionTypeDefaultArgs<ExtArgs>
-  brand?: boolean | Prisma.BrandDefaultArgs<ExtArgs>
   model?: boolean | Prisma.ModelDefaultArgs<ExtArgs>
 }
 export type VehicleIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  bodyType?: boolean | Prisma.BodyTypeDefaultArgs<ExtArgs>
-  fuelType?: boolean | Prisma.FuelTypeDefaultArgs<ExtArgs>
-  transmissionType?: boolean | Prisma.TransmissionTypeDefaultArgs<ExtArgs>
-  brand?: boolean | Prisma.BrandDefaultArgs<ExtArgs>
   model?: boolean | Prisma.ModelDefaultArgs<ExtArgs>
 }
 export type VehicleIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  bodyType?: boolean | Prisma.BodyTypeDefaultArgs<ExtArgs>
-  fuelType?: boolean | Prisma.FuelTypeDefaultArgs<ExtArgs>
-  transmissionType?: boolean | Prisma.TransmissionTypeDefaultArgs<ExtArgs>
-  brand?: boolean | Prisma.BrandDefaultArgs<ExtArgs>
   model?: boolean | Prisma.ModelDefaultArgs<ExtArgs>
 }
 
 export type $VehiclePayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Vehicle"
   objects: {
-    bodyType: Prisma.$BodyTypePayload<ExtArgs>
-    fuelType: Prisma.$FuelTypePayload<ExtArgs>
-    transmissionType: Prisma.$TransmissionTypePayload<ExtArgs>
-    brand: Prisma.$BrandPayload<ExtArgs>
     model: Prisma.$ModelPayload<ExtArgs>
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
-    vin: string
-    plateNumber: string
-    year: number
-    isAvailable: boolean
-    fuelLevel: number
-    latitude: runtime.Decimal
-    longitude: runtime.Decimal
-    bodyTypeId: string
-    fuelTypeId: string
-    transmissionTypeId: string
-    brandId: string
     modelId: string
   }, ExtArgs["result"]["vehicle"]>
   composites: {}
@@ -1913,10 +789,6 @@ readonly fields: VehicleFieldRefs;
  */
 export interface Prisma__VehicleClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
-  bodyType<T extends Prisma.BodyTypeDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.BodyTypeDefaultArgs<ExtArgs>>): Prisma.Prisma__BodyTypeClient<runtime.Types.Result.GetResult<Prisma.$BodyTypePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-  fuelType<T extends Prisma.FuelTypeDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.FuelTypeDefaultArgs<ExtArgs>>): Prisma.Prisma__FuelTypeClient<runtime.Types.Result.GetResult<Prisma.$FuelTypePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-  transmissionType<T extends Prisma.TransmissionTypeDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.TransmissionTypeDefaultArgs<ExtArgs>>): Prisma.Prisma__TransmissionTypeClient<runtime.Types.Result.GetResult<Prisma.$TransmissionTypePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-  brand<T extends Prisma.BrandDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.BrandDefaultArgs<ExtArgs>>): Prisma.Prisma__BrandClient<runtime.Types.Result.GetResult<Prisma.$BrandPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   model<T extends Prisma.ModelDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.ModelDefaultArgs<ExtArgs>>): Prisma.Prisma__ModelClient<runtime.Types.Result.GetResult<Prisma.$ModelPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -1948,17 +820,6 @@ export interface Prisma__VehicleClient<T, Null = never, ExtArgs extends runtime.
  */
 export interface VehicleFieldRefs {
   readonly id: Prisma.FieldRef<"Vehicle", 'String'>
-  readonly vin: Prisma.FieldRef<"Vehicle", 'String'>
-  readonly plateNumber: Prisma.FieldRef<"Vehicle", 'String'>
-  readonly year: Prisma.FieldRef<"Vehicle", 'Int'>
-  readonly isAvailable: Prisma.FieldRef<"Vehicle", 'Boolean'>
-  readonly fuelLevel: Prisma.FieldRef<"Vehicle", 'Int'>
-  readonly latitude: Prisma.FieldRef<"Vehicle", 'Decimal'>
-  readonly longitude: Prisma.FieldRef<"Vehicle", 'Decimal'>
-  readonly bodyTypeId: Prisma.FieldRef<"Vehicle", 'String'>
-  readonly fuelTypeId: Prisma.FieldRef<"Vehicle", 'String'>
-  readonly transmissionTypeId: Prisma.FieldRef<"Vehicle", 'String'>
-  readonly brandId: Prisma.FieldRef<"Vehicle", 'String'>
   readonly modelId: Prisma.FieldRef<"Vehicle", 'String'>
 }
     

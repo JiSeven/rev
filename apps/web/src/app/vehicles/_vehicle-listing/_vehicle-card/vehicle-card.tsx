@@ -5,7 +5,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Vehicle } from "@/types/vehicle";
+import { Vehicle } from "@/api/types";
 
 import { VehiclePreview } from "./_vehicle-preview";
 import { VehicleRentPrice } from "./_vehicle-rent-price";
@@ -20,7 +20,7 @@ type Props = {
 
 export function VehicleCard({ vehicle: vehicle }: Props) {
   return (
-    <Card size="sm" className="mx-auto w-full max-w-sm">
+    <Card size="sm" className="mx-auto w-full">
       <CardHeader className="grid grid-cols-[auto_auto_1fr] gap-3">
         <DistanceToVehicle />
         <VehicleRating />
@@ -31,7 +31,9 @@ export function VehicleCard({ vehicle: vehicle }: Props) {
         <VehiclePreview image={vehicle.image} />
         <div className="grid grid-cols-[1fr_auto]">
           <CardTitle>
-            <h3 className="font-bold">{vehicle.name}</h3>
+            <h3 className="font-bold">
+              {vehicle.model.brand.name} {vehicle.model.name}
+            </h3>
           </CardTitle>
           <VehicleRentPrice className="row-span-2 self-end ml-auto" />
           <CardDescription>

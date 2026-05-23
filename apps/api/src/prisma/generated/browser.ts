@@ -18,21 +18,6 @@ export { Prisma }
 export * as $Enums from './enums.js'
 export * from './enums.js';
 /**
- * Model BodyType
- * 
- */
-export type BodyType = Prisma.BodyTypeModel
-/**
- * Model FuelType
- * 
- */
-export type FuelType = Prisma.FuelTypeModel
-/**
- * Model TransmissionType
- * 
- */
-export type TransmissionType = Prisma.TransmissionTypeModel
-/**
  * Model Brand
  * 
  */

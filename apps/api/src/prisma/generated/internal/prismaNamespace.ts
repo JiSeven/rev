@@ -384,9 +384,6 @@ type FieldRefInputType<Model, FieldType> = Model extends never ? never : FieldRe
 
 
 export const ModelName = {
-  BodyType: 'BodyType',
-  FuelType: 'FuelType',
-  TransmissionType: 'TransmissionType',
   Brand: 'Brand',
   Model: 'Model',
   Vehicle: 'Vehicle'
@@ -405,232 +402,10 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "bodyType" | "fuelType" | "transmissionType" | "brand" | "model" | "vehicle"
+    modelProps: "brand" | "model" | "vehicle"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
-    BodyType: {
-      payload: Prisma.$BodyTypePayload<ExtArgs>
-      fields: Prisma.BodyTypeFieldRefs
-      operations: {
-        findUnique: {
-          args: Prisma.BodyTypeFindUniqueArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$BodyTypePayload> | null
-        }
-        findUniqueOrThrow: {
-          args: Prisma.BodyTypeFindUniqueOrThrowArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$BodyTypePayload>
-        }
-        findFirst: {
-          args: Prisma.BodyTypeFindFirstArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$BodyTypePayload> | null
-        }
-        findFirstOrThrow: {
-          args: Prisma.BodyTypeFindFirstOrThrowArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$BodyTypePayload>
-        }
-        findMany: {
-          args: Prisma.BodyTypeFindManyArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$BodyTypePayload>[]
-        }
-        create: {
-          args: Prisma.BodyTypeCreateArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$BodyTypePayload>
-        }
-        createMany: {
-          args: Prisma.BodyTypeCreateManyArgs<ExtArgs>
-          result: BatchPayload
-        }
-        createManyAndReturn: {
-          args: Prisma.BodyTypeCreateManyAndReturnArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$BodyTypePayload>[]
-        }
-        delete: {
-          args: Prisma.BodyTypeDeleteArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$BodyTypePayload>
-        }
-        update: {
-          args: Prisma.BodyTypeUpdateArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$BodyTypePayload>
-        }
-        deleteMany: {
-          args: Prisma.BodyTypeDeleteManyArgs<ExtArgs>
-          result: BatchPayload
-        }
-        updateMany: {
-          args: Prisma.BodyTypeUpdateManyArgs<ExtArgs>
-          result: BatchPayload
-        }
-        updateManyAndReturn: {
-          args: Prisma.BodyTypeUpdateManyAndReturnArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$BodyTypePayload>[]
-        }
-        upsert: {
-          args: Prisma.BodyTypeUpsertArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$BodyTypePayload>
-        }
-        aggregate: {
-          args: Prisma.BodyTypeAggregateArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.AggregateBodyType>
-        }
-        groupBy: {
-          args: Prisma.BodyTypeGroupByArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.BodyTypeGroupByOutputType>[]
-        }
-        count: {
-          args: Prisma.BodyTypeCountArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.BodyTypeCountAggregateOutputType> | number
-        }
-      }
-    }
-    FuelType: {
-      payload: Prisma.$FuelTypePayload<ExtArgs>
-      fields: Prisma.FuelTypeFieldRefs
-      operations: {
-        findUnique: {
-          args: Prisma.FuelTypeFindUniqueArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$FuelTypePayload> | null
-        }
-        findUniqueOrThrow: {
-          args: Prisma.FuelTypeFindUniqueOrThrowArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$FuelTypePayload>
-        }
-        findFirst: {
-          args: Prisma.FuelTypeFindFirstArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$FuelTypePayload> | null
-        }
-        findFirstOrThrow: {
-          args: Prisma.FuelTypeFindFirstOrThrowArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$FuelTypePayload>
-        }
-        findMany: {
-          args: Prisma.FuelTypeFindManyArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$FuelTypePayload>[]
-        }
-        create: {
-          args: Prisma.FuelTypeCreateArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$FuelTypePayload>
-        }
-        createMany: {
-          args: Prisma.FuelTypeCreateManyArgs<ExtArgs>
-          result: BatchPayload
-        }
-        createManyAndReturn: {
-          args: Prisma.FuelTypeCreateManyAndReturnArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$FuelTypePayload>[]
-        }
-        delete: {
-          args: Prisma.FuelTypeDeleteArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$FuelTypePayload>
-        }
-        update: {
-          args: Prisma.FuelTypeUpdateArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$FuelTypePayload>
-        }
-        deleteMany: {
-          args: Prisma.FuelTypeDeleteManyArgs<ExtArgs>
-          result: BatchPayload
-        }
-        updateMany: {
-          args: Prisma.FuelTypeUpdateManyArgs<ExtArgs>
-          result: BatchPayload
-        }
-        updateManyAndReturn: {
-          args: Prisma.FuelTypeUpdateManyAndReturnArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$FuelTypePayload>[]
-        }
-        upsert: {
-          args: Prisma.FuelTypeUpsertArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$FuelTypePayload>
-        }
-        aggregate: {
-          args: Prisma.FuelTypeAggregateArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.AggregateFuelType>
-        }
-        groupBy: {
-          args: Prisma.FuelTypeGroupByArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.FuelTypeGroupByOutputType>[]
-        }
-        count: {
-          args: Prisma.FuelTypeCountArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.FuelTypeCountAggregateOutputType> | number
-        }
-      }
-    }
-    TransmissionType: {
-      payload: Prisma.$TransmissionTypePayload<ExtArgs>
-      fields: Prisma.TransmissionTypeFieldRefs
-      operations: {
-        findUnique: {
-          args: Prisma.TransmissionTypeFindUniqueArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$TransmissionTypePayload> | null
-        }
-        findUniqueOrThrow: {
-          args: Prisma.TransmissionTypeFindUniqueOrThrowArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$TransmissionTypePayload>
-        }
-        findFirst: {
-          args: Prisma.TransmissionTypeFindFirstArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$TransmissionTypePayload> | null
-        }
-        findFirstOrThrow: {
-          args: Prisma.TransmissionTypeFindFirstOrThrowArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$TransmissionTypePayload>
-        }
-        findMany: {
-          args: Prisma.TransmissionTypeFindManyArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$TransmissionTypePayload>[]
-        }
-        create: {
-          args: Prisma.TransmissionTypeCreateArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$TransmissionTypePayload>
-        }
-        createMany: {
-          args: Prisma.TransmissionTypeCreateManyArgs<ExtArgs>
-          result: BatchPayload
-        }
-        createManyAndReturn: {
-          args: Prisma.TransmissionTypeCreateManyAndReturnArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$TransmissionTypePayload>[]
-        }
-        delete: {
-          args: Prisma.TransmissionTypeDeleteArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$TransmissionTypePayload>
-        }
-        update: {
-          args: Prisma.TransmissionTypeUpdateArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$TransmissionTypePayload>
-        }
-        deleteMany: {
-          args: Prisma.TransmissionTypeDeleteManyArgs<ExtArgs>
-          result: BatchPayload
-        }
-        updateMany: {
-          args: Prisma.TransmissionTypeUpdateManyArgs<ExtArgs>
-          result: BatchPayload
-        }
-        updateManyAndReturn: {
-          args: Prisma.TransmissionTypeUpdateManyAndReturnArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$TransmissionTypePayload>[]
-        }
-        upsert: {
-          args: Prisma.TransmissionTypeUpsertArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$TransmissionTypePayload>
-        }
-        aggregate: {
-          args: Prisma.TransmissionTypeAggregateArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.AggregateTransmissionType>
-        }
-        groupBy: {
-          args: Prisma.TransmissionTypeGroupByArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.TransmissionTypeGroupByOutputType>[]
-        }
-        count: {
-          args: Prisma.TransmissionTypeCountArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.TransmissionTypeCountAggregateOutputType> | number
-        }
-      }
-    }
     Brand: {
       payload: Prisma.$BrandPayload<ExtArgs>
       fields: Prisma.BrandFieldRefs
@@ -892,30 +667,6 @@ export const TransactionIsolationLevel = runtime.makeStrictEnum({
 export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof typeof TransactionIsolationLevel]
 
 
-export const BodyTypeScalarFieldEnum = {
-  id: 'id',
-  name: 'name'
-} as const
-
-export type BodyTypeScalarFieldEnum = (typeof BodyTypeScalarFieldEnum)[keyof typeof BodyTypeScalarFieldEnum]
-
-
-export const FuelTypeScalarFieldEnum = {
-  id: 'id',
-  name: 'name'
-} as const
-
-export type FuelTypeScalarFieldEnum = (typeof FuelTypeScalarFieldEnum)[keyof typeof FuelTypeScalarFieldEnum]
-
-
-export const TransmissionTypeScalarFieldEnum = {
-  id: 'id',
-  name: 'name'
-} as const
-
-export type TransmissionTypeScalarFieldEnum = (typeof TransmissionTypeScalarFieldEnum)[keyof typeof TransmissionTypeScalarFieldEnum]
-
-
 export const BrandScalarFieldEnum = {
   id: 'id',
   name: 'name'
@@ -935,17 +686,6 @@ export type ModelScalarFieldEnum = (typeof ModelScalarFieldEnum)[keyof typeof Mo
 
 export const VehicleScalarFieldEnum = {
   id: 'id',
-  vin: 'vin',
-  plateNumber: 'plateNumber',
-  year: 'year',
-  isAvailable: 'isAvailable',
-  fuelLevel: 'fuelLevel',
-  latitude: 'latitude',
-  longitude: 'longitude',
-  bodyTypeId: 'bodyTypeId',
-  fuelTypeId: 'fuelTypeId',
-  transmissionTypeId: 'transmissionTypeId',
-  brandId: 'brandId',
   modelId: 'modelId'
 } as const
 
@@ -999,41 +739,6 @@ export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'In
  * Reference to a field of type 'Int[]'
  */
 export type ListIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int[]'>
-    
-
-
-/**
- * Reference to a field of type 'Boolean'
- */
-export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Boolean'>
-    
-
-
-/**
- * Reference to a field of type 'Decimal'
- */
-export type DecimalFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Decimal'>
-    
-
-
-/**
- * Reference to a field of type 'Decimal[]'
- */
-export type ListDecimalFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Decimal[]'>
-    
-
-
-/**
- * Reference to a field of type 'Float'
- */
-export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
-    
-
-
-/**
- * Reference to a field of type 'Float[]'
- */
-export type ListFloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float[]'>
     
 
 /**
@@ -1146,9 +851,6 @@ export type PrismaClientOptions = ({
   queryPlanCacheMaxSize?: number
 }
 export type GlobalOmitConfig = {
-  bodyType?: Prisma.BodyTypeOmit
-  fuelType?: Prisma.FuelTypeOmit
-  transmissionType?: Prisma.TransmissionTypeOmit
   brand?: Prisma.BrandOmit
   model?: Prisma.ModelOmit
   vehicle?: Prisma.VehicleOmit
