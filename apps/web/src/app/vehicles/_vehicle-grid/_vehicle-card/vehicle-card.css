@@ -1,0 +1,46 @@
+@layer pages {
+  @scope (.vehicle-card) {
+    :scope {
+      display: grid;
+      background-color: white;
+      border-radius: 1rem;
+      padding: 1rem;
+    }
+
+    img {
+      margin-inline: auto;
+    }
+
+    .header {
+      font-size: 0.75rem;
+      display: grid;
+      grid-auto-flow: column;
+      grid-template-columns: max-content;
+      gap: 10px;
+      align-items: center;
+
+      > :last-child {
+        margin-left: auto;
+      }
+    }
+
+    .distance {
+      color: #1a1d1f;
+      font-weight: 600;
+    }
+
+    h3 {
+      /* 16px */
+      font-size: 0.935rem;
+      font-weight: 600;
+      color: #1a1d1f;
+    }
+
+    .specs {
+      /* ~12px */
+      font-size: 0.75rem;
+      font-weight: 400;
+      color: #9a9fa5;
+    }
+  }
+}

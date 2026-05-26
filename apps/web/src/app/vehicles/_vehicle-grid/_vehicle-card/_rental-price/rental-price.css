@@ -1,0 +1,11 @@
+@layer pages {
+  @scope (.rental-price) {
+    :scope {
+      display: grid;
+      grid-auto-flow: column;
+      width: fit-content;
+      gap: 3px;
+      align-items: baseline;
+    }
+  }
+}

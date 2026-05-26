@@ -1,4 +1,4 @@
-class VehicleException extends Error {
+export class ApiExpection extends Error {
   constructor(message: string, options: ErrorOptions) {
     super(message, options);
 
@@ -11,4 +11,4 @@ class VehicleException extends Error {
   }
 }
 
-export class UnknownVehicleException extends VehicleException {}
+export class UnknownException extends Error {}

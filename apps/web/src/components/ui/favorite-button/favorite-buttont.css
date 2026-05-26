@@ -1,0 +1,21 @@
+@layer components {
+  @scope (.favorite-button) {
+    :scope {
+      padding: 0;
+      background: none;
+      width: fit-content;
+
+      &.active {
+        color: red;
+      }
+
+      &:enabled {
+        cursor: pointer;
+
+        &:hover {
+          color: red;
+        }
+      }
+    }
+  }
+}

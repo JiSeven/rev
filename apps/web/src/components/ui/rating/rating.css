@@ -1,0 +1,24 @@
+@layer components {
+  @scope (.rating) {
+    :scope {
+      display: grid;
+      grid-auto-flow: column;
+      align-items: center;
+      width: fit-content;
+      gap: 3px;
+    }
+
+    .icon {
+      color: orange;
+    }
+
+    .value {
+      font-weight: 500;
+      color: #1a1d1f;
+    }
+
+    .reviews-count {
+      color: var(--muted-text);
+    }
+  }
+}

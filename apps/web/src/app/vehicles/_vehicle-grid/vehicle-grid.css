@@ -1,0 +1,9 @@
+@layer pages {
+  @scope (.vehicle-grid) to (.content > *) {
+    :scope .content {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+    }
+  }
+}
